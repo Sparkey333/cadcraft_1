@@ -5,7 +5,7 @@
   {
    "site": "G2",
    "rating": "4.4/5",
-   "count": "~300 reviews (one G2 page shows 390; current count unverified)",
+   "count": "about 290-300 reviews on the reviews page; other snapshots show 125, 194 or 390; the live count was not confirmed (reconciled after the fact-check and critique, 2026-10-21)",
    "url": "https://www.g2.com/products/civil-3d/reviews"
   },
   {
@@ -104,7 +104,7 @@
   },
   {
    "theme": "Subscription cost, licence model, billing",
-   "detail": "Official US list: $360/mo, $2,870/yr, $8,610/3-yr; Flex from $300 per 100 tokens with Civil 3D burning 9 tokens per day (2026 pricing not confirmed; resellers show conflicting $275/mo-$2,945/yr figures). No perpetual licences; network licences retired (sources conflict on 2021/2023/2024) with Flex criticised for penalising occasional users; licensing consultancies claim 6-9% list increases in Jan 2026 (unverified). Capterra value 1.0/5 from one reviewer; G2: prohibitive for individuals/students; surveyors: '3 seats of Carlson IntelliCAD for one seat of C3D', one left for BricsCAD over pricing. Trustpilot 1.5/5 on auto-renewal charges and support; licence-compliance audit letters.",
+   "detail": "Official US list: $360/mo, $2,870/yr, $8,610/3-yr; Flex from USD 3 per token with a 33-token (USD 99) minimum since June 2026 (earlier: 100 tokens for USD 300) (reconciled after the fact-check and critique, 2026-10-21) with Civil 3D burning 9 tokens per day (2026 pricing not confirmed; resellers show conflicting $275/mo-$2,945/yr figures). No perpetual licences; network licences retired (sources conflict on 2021/2023/2024) with Flex criticised for penalising occasional users; licensing consultancies claim 6-9% list increases in Jan 2026 (unverified). Capterra value 1.0/5 from one reviewer; G2: prohibitive for individuals/students; surveyors: '3 seats of Carlson IntelliCAD for one seat of C3D', one left for BricsCAD over pricing. Trustpilot 1.5/5 on auto-renewal charges and support; licence-compliance audit letters.",
    "source": "https://www.autodesk.com/solutions/aec/civil-3d-subscription-faq ; https://wiki.licenseware.io/wiki/autodesk-single-user-and-flex/ ; https://www.openlm.com/blog/autodesk-flex-is-it-the-right-solution-for-you/ ; https://rpls.com/forums/software-cad-mapping/surveying-software/ ; https://uk.trustpilot.com/review/autodesk.com ; https://autodesksaudits.com/blog/autodesk-price-increase-history/",
    "severity": "high"
   },
@@ -241,7 +241,7 @@
    "source": "https://forums.autodesk.com/t5/civil-3d-forum/multicore-processors-more-2-cores-c3d-peer-support/td-p/13247896"
   },
   {
-   "claim": "Official US pricing: $360/month, $2,870/year, $8,610/3-year; Flex from $300 per 100 tokens.",
+   "claim": "Official US pricing: $360/month, $2,870/year, $8,610/3-year; Flex from USD 3 per token with a 33-token (USD 99) minimum since June 2026 (earlier: 100 tokens for USD 300) (reconciled after the fact-check and critique, 2026-10-21).",
    "source": "https://www.autodesk.com/solutions/aec/civil-3d-subscription-faq"
   },
   {

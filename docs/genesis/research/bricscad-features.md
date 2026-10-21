@@ -309,3 +309,5 @@ Status key: full / partial / none / unknown. "[S]" sourced, "[U]" unverified bac
 - Bricsys now trades as Octave (a Hexagon spin-off); the product pages live at bricscad.octave.com with bricsys.com mirrors.
 - BricsCAD V27 launched with a keynote on 20 October 2026 (release notes build 27.1.05): Dynamic Input at the cursor, Quad marking-menu gestures, an AI chat panel for documentation, constraints on 2D blocks, dynamic-block library migration, Auto Mapping linework from survey codes, point clouds as mesh objects, Tool Palettes customised from model space. The inventory above describes V26; V27 pricing was not re-checked.
 - V26 shipped in October 2025 (press release 26/27 October; trade press 16 October); the cited 'arrives this October' page is the pre-launch teaser.
+- Data links: a later editor search found DATALINK supports .xls/.xlsx/.csv with Full/Relative/No-path storage and optional write-back (help.bricsys.com DataLink Edit dialog); the 'unknown' above is superseded.
+- Civil points: CIVILPOINT/CIVILPOINTGROUP/CIVILPOINTEXPORT exist (help.bricsys.com); no survey database or least-squares adjustment was found, so the row is 'partial'.

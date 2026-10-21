@@ -48,3 +48,46 @@
 - Scope: sites (lots, pads, driveways, small streets, grading, drainage, utilities to the main),
   old-school and neo techniques as first-class objects, open public data feeds cached in the
   project.
+
+## 2026-10-21 · Second iteration: review the page, fix it, reconcile the numbers
+
+### What the review found (four lenses, 90 findings, 69 verified: 68 real, 1 not)
+- Counts drift between a worker's text and the repository: the inventory worker reported 19
+  `catch_unwind` guards and about 40 hostile tests; a grep on the same day finds 21 call sites
+  (two restore the drawing, the rest turn a panic into an error) and 100 test functions with
+  "hostile" in the name (39 in the engine crate). Record the counting method next to every count;
+  reconcile with a single replacement table at merge time rather than editing each worker's notes.
+- Section numbering must be assigned once, in the table of contents, and every cross-reference
+  must point at an anchor, not a number; the first draft said "section 7" for a section numbered 6
+  and "ten releases" where the fact-check had already established eight.
+- A command count must be the same number everywhere it appears (goals, principles, identity card,
+  feature heading). Compute it from the command table at build time instead of typing it.
+- Keyword mapping of complaint themes to designs needs two passes (every theme pattern before any
+  detail fallback) and word boundaries: "mitigated" matched "gated", "point clouds" matched
+  "cloud", "AUDIT/RECOVER habits" matched an input-model pattern. Print the mapping and read it
+  before trusting it; the review caught three mis-mapped rows the first time.
+- Readers need the product-by-product "new versus missing" lists and a theme × product matrix,
+  not only a long verbatim table; keep the verbatim rows in a collapsed block with their sources.
+- Genesis is a plan: write its claims in the conditional, keep an identity card labelled
+  "targets, not measurements", and list where every target number comes from (appendix A.4).
+
+### Facts added or corrected in this iteration
+- BricsCAD V27 launched on 20 October 2026 from Octave, the name Bricsys took in 2026 as a Hexagon
+  spin-off; the inventory stays on V26 and marks V27 additions. AutoLISP runs in every BricsCAD
+  edition; Pro adds 3D, the civil tools, point clouds and the BRX/.NET/COM APIs.
+- CADCraft's plot style tables are its own JSON format behind the `.ctb`/`.stb` names; vendor
+  binaries are not read. DXF is read R12–2018 in ASCII and binary.
+- Civil 3D referencing and crash safety are partial, not missing, in the summary table: data
+  shortcuts and xrefs exist and break; the crash-reporting pipeline exists and the fixed-issue
+  lists carry 12–17 crash fixes per release.
+
+### Open follow-ups for the next iteration (from the completeness critic)
+- Add Carlson Civil/Survey and Trimble Business Center snapshots; capture Civil Site Design for
+  BricsCAD; count BricsCAD crash fixes from its release notes; settle BricsCAD and Autodesk list
+  prices on the live store pages; record live G2 review counts.
+- Assess the `acadrust` DWG bridge (maintainers, corpus, native write) before Genesis depends on it.
+- Run a benchmark on a large public DWG/DXF (open, xattach, save) with memory measured, so the
+  Genesis targets in appendix A.4 rest on numbers from this container rather than issue reports.
+- Reproduce upstream #540 (two instances saving the same file) on 0.10.0 and file the result.
+- Retrieve Reddit, Hacker News and YouTube sentiment through a reachable route; these were blocked.
+- Run `qa.jsonl` through a second provider from `byok.md` and add the first cross-model row.

@@ -1,5 +1,5 @@
 {
- "summary": "CADCraft v0.10.0 (released 2026-10-19/21) is a pre-alpha, pure-Rust, MIT/Apache-2.0 2D CAD app targeting AutoCAD 2027 parity. Measured on 2026-10-21 from the clone at /home/user/cadcraft_1 without building: 193,684 lines of Rust in 618 files across 12 library crates + 3 apps + xtask; 413 registered engine command ids (240 with interactive prompt machines) plus 56 UI-only commands; 2,184 #[test] attributes; 16 interface languages. The repo's own weighted self-assessment: menu breadth 245/491 = 50% (ROADMAP, 2026-10-10; the regenerated checklist of 2026-10-16 says 283/491 = 58%), ready for real work ≈ 38%, mainstream 2D drafter ≈ 28%, essentials user ≈ 46%; DXF ≈ 50% read / 30% write, DWG ≈ 30% read / 15% write; 3D 2%; stability 35%. Strong: 2D draw/modify/dimension/layer/hatch/block basics, parametric constraints, DXF foreign-data round trip, vector PDF with real text and layers, cross-platform signed builds incl. Linux/FreeBSD/web, agent-first automation (MCP, JSON control channel, CLI), AutoLISP core, and a credible never-crash architecture (unsafe forbidden, panic lints, catch_unwind guards that restore the drawing, ~40 hostile-input tests, caps everywhere, autosave with recovery, AUDIT/RECOVER). Weak: 4 of 5 daily workflows fail its own alpha gate; DWG save is lossy via the acadrust bridge and never verified in AutoCAD with no real-file corpus; no 3D, no civil/land features whatsoever (zero hits for TIN/contour/alignment/COGO/GIS/geolocation/survey in the code); no PDF/raster underlays, SHX fonts, binary CTB/PC3, printers, sheet sets, eTransmit, fields, dynamic-block authoring, XCLIP, plug-in API; no CI test gate on PRs; absolute geometry tolerances and a 2D kernel untested at survey-scale coordinates; several parity docs contradict each other.",
+ "summary": "CADCraft v0.10.0 (released 2026-10-19/21) is a pre-alpha, pure-Rust, MIT/Apache-2.0 2D CAD app targeting AutoCAD 2027 parity. Measured on 2026-10-21 from the clone at /home/user/cadcraft_1 without building: 193,684 lines of Rust in 618 files across 12 library crates + 3 apps + xtask; 413 registered engine command ids (240 with interactive prompt machines) plus 56 UI-only commands; 2,184 #[test] attributes; 16 interface languages. The repo's own weighted self-assessment: menu breadth 245/491 = 50% (ROADMAP, 2026-10-10; the regenerated checklist of 2026-10-16 says 283/491 = 58%), ready for real work ≈ 38%, mainstream 2D drafter ≈ 28%, essentials user ≈ 46%; DXF ≈ 50% read / 30% write, DWG ≈ 30% read / 15% write; 3D 2%; stability 35%. Strong: 2D draw/modify/dimension/layer/hatch/block basics, parametric constraints, DXF foreign-data round trip, vector PDF with real text and layers, cross-platform signed builds incl. Linux/FreeBSD/web, agent-first automation (MCP, JSON control channel, CLI), AutoLISP core, and a credible never-crash architecture (unsafe forbidden, panic lints, catch_unwind guards that restore the drawing, 100 hostile-named test functions (39 in the engine crate; recounted 2026-10-21), caps everywhere, autosave with recovery, AUDIT/RECOVER). Weak: 4 of 5 daily workflows fail its own alpha gate; DWG save is lossy via the acadrust bridge and never systematically verified by the project and there is no real-file corpus in the repository; community reports exist: issue #604 (an AutoCAD 2027 round trip gained 6 AUDIT errors and came back as AC1018) and the #1041 corpus test (BricsCAD V26 refused 14 of 23 CADCraft-saved DWGs) (reconciled after the fact-check and critique, 2026-10-21); no 3D, no civil/land features whatsoever (zero hits for TIN/contour/alignment/COGO/GIS/geolocation/survey in the code); no PDF/raster underlays, SHX fonts, binary CTB/PC3, printers, sheet sets, eTransmit, fields, dynamic-block authoring, XCLIP, plug-in API; no CI test gate on PRs; absolute geometry tolerances and a 2D kernel untested at survey-scale coordinates; several parity docs contradict each other.",
  "numbers": [
   {
    "metric": "Version",
@@ -63,7 +63,7 @@
   },
   {
    "metric": "Tests",
-   "value": "2,184 #[test] attributes; ~40 hostile_* never-panic tests; 36 io round-trip tests, all synthetic",
+   "value": "2,184 #[test] attributes; 100 hostile-named never-panic test functions (recounted 2026-10-21); 36 io round-trip tests, all synthetic",
    "evidence": "grep; docs/file-format-parity.md#tests"
   },
   {
@@ -365,7 +365,7 @@
     {
      "name": "DWG 2000–2018 read/write via acadrust bridge",
      "status": "partial",
-     "notes": "drops custom-class objects, some xdata, colour books, reactors; never verified in AutoCAD; no real-file corpus; 10 MB file failed; not on web",
+     "notes": "drops custom-class objects, some xdata, colour books, reactors; never systematically verified in AutoCAD by the project (community issue #604 reports one round trip with 6 AUDIT errors); no real-file corpus; 10 MB file failed; not on web",
      "evidence": "docs/gaps.md top-10 rows 1–2, FF6; crates/dwg/src/lib.rs"
     },
     {
@@ -556,7 +556,7 @@
     {
      "name": "Hostile-input tests and input caps",
      "status": "full",
-     "notes": "~40 hostile_* tests; property suite with NaN/inf/1e300; caps on DXF tags, hatch, blocks (depth 16), xrefs, clipboard, compare, links, control channel",
+     "notes": "100 hostile-named test functions; property suite with NaN/inf/1e300; caps on DXF tags, hatch, blocks (depth 16), xrefs, clipboard, compare, links, control channel",
      "evidence": "grep; geom/src/property_tests.rs; constants cited in notes"
     },
     {
@@ -661,7 +661,7 @@
   }
  ],
  "unique_strengths": [
-  "Credible never-crash engineering: pure Rust with unsafe forbidden, panic-denying lints on 15 crate roots, 19 catch_unwind boundaries that restore the drawing, ~40 hostile-input tests plus a property-based numeric suite, caps on every input-sized structure, autosave with instance lock files, AUDIT/RECOVER that never guess content, crash-surviving rotated logs.",
+  "Credible never-crash engineering: pure Rust with unsafe forbidden, panic-denying lints on 15 crate roots, 21 catch_unwind call sites (Session::execute and the LISP runner restore the drawing, the rest turn an escaped panic into an error; recounted 2026-10-21), 100 hostile-named test functions (39 in the engine crate; recounted 2026-10-21) plus a property-based numeric suite, caps on every input-sized structure, autosave with instance lock files, AUDIT/RECOVER that never guess content, crash-surviving rotated logs.",
   "Agent-first automation no commercial CAD ships natively: MCP server (headless or bridged to the app), JSON control channel with UI introspection and screenshots, cadcraft-cli batch runs, and an 'everything is a command' registry whose JSON form never opens dialogs.",
   "Broadest platform reach of the three apps compared: signed Windows x64/arm64/x86, notarized macOS universal, Linux (AppImage/Flatpak/deb/rpm, aarch64, riscv64), FreeBSD, and a browser build.",
   "Free and open (MIT OR Apache-2.0), clean-room, no account; DXF foreign-data round trip (#528), vector PDF with real text/layers/hyperlinks, SVG import/export, own parametric solver with DOF reporting, 16 interface languages.",
@@ -669,7 +669,7 @@
  ],
  "notable_weaknesses": [
   "Pre-alpha: 4 of 5 daily AutoCAD workflows fail the repo's own alpha gate; ready-for-real-work ≈ 38%, mainstream 2D drafter ≈ 28%.",
-  "DWG save is lossy through the third-party acadrust bridge, never verified in AutoCAD, no real-file corpus; a 10 MB DWG failed after ~2 minutes; DWG passes through an in-memory DXF (1.2 GB for an 83 MB file).",
+  "DWG save is lossy through the third-party acadrust bridge, never systematically verified in AutoCAD by the project (community issue #604 reports one round trip with 6 AUDIT errors), no real-file corpus; a 10 MB DWG failed after ~2 minutes; DWG passes through an in-memory DXF (1.2 GB for an 83 MB file).",
   "No 3D at all (2D Vec2 kernel, no UCS) and no civil/land-development capability of any kind (points/surfaces/contours/alignments/grading/parcels/GIS/geolocation/survey all absent).",
   "No PDF/raster/DWF/DGN underlays or image display (ATTACH is a stub), no SHX fonts (text metrics differ), binary CTB/STB/PC3 unreadable, no physical printers, no sheet sets/eTransmit/fields/SPELL, no dynamic-block authoring or XCLIP, no plug-in API or CUI.",
   "Stability self-rated 35% with no CI test gate on pull requests; ~400 open PRs and ~390 open issues on the upstream page (unverified); Windows/Linux lightly tested; web build lacks DWG and autosave.",
@@ -689,7 +689,7 @@
   },
   {
    "topic": "Xref state persistence",
-   "finding": "Unloaded state and per-xref layer overrides last only for the session; XCLIP doesn't exist; in-place xref edits aren't written back. Genesis must save xref state and clip boundaries in the document.",
+   "finding": "The Unloaded state lasts only for the session (host overrides on xref layers do persist, test #886); XCLIP doesn't exist; in-place xref edits aren't written back. Genesis must save xref state and clip boundaries in the document.",
    "evidence": "docs/gaps.md F2"
   },
   {
@@ -757,7 +757,7 @@
    "source": "measured in the clone on 2026-10-21; Cargo.toml; git log; GitHub release page"
   },
   {
-   "claim": "DXF ≈ 50% read / 30% write; DWG ≈ 30% read / 15% write via the acadrust 0.6.4 bridge; never verified in AutoCAD; all 36 file tests are synthetic.",
+   "claim": "DXF ≈ 50% read / 30% write; DWG ≈ 30% read / 15% write via the acadrust 0.6.4 bridge; never systematically verified in AutoCAD by the project (community issue #604 reports one round trip with 6 AUDIT errors); all 36 file tests are synthetic.",
    "source": "docs/file-format-parity.md"
   },
   {
@@ -765,7 +765,7 @@
    "source": "crates/engine/src/cmd/exchange.rs:57-69; word-boundary grep of cmd/doc/io sources"
   },
   {
-   "claim": "The never-crash policy is enforced by workspace lints (unsafe forbidden, unwrap/expect/panic denied) and 19 catch_unwind guards that restore the drawing, backed by ~40 hostile-input tests.",
+   "claim": "The never-crash policy is enforced by workspace lints (unsafe forbidden, unwrap/expect/panic denied) and 21 catch_unwind call sites, two of which restore the drawing (recounted 2026-10-21), backed by 100 hostile-named test functions (39 in the engine crate; recounted 2026-10-21).",
    "source": "Cargo.toml; crates/engine/src/guard.rs, lib.rs:896; grep"
   },
   {

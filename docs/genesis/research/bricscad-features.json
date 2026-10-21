@@ -15,7 +15,7 @@
   },
   {
    "plan": "Ultimate maintenance renewal (official store, EUR)",
-   "price": "EUR 440 per year; 'from year two, renewal is up to you' (optional)",
+   "price": "EUR 440 per year; 'from year two, renewal is up to you' (optional). Caveat: the reviews worker read Pro maintenance at EUR 710/yr on the same domain, which would make Ultimate cheaper than Pro; one of the two figures is a rendering or regional artefact, so confirm in the live store (reconciled after the fact-check and critique, 2026-10-21)",
    "source": "https://bricscad.octave.com/maintenance"
   },
   {
@@ -81,7 +81,7 @@
     {
      "name": "Auto Mapping: linework from survey codes; point clouds shared as mesh objects (editor's own search, 2026-10-21)",
      "status": "full",
-     "notes": "A survey-to-linework step relevant to site work; details beyond the launch summary not verified",
+     "notes": "Auto Mapping for civil points already existed in V26 (reseller first-impressions); V27's launch page lists linework from survey codes as new (reconciled after the fact-check and critique, 2026-10-21)",
      "source": "https://bricscad.octave.com/v27/launch"
     },
     {
@@ -342,8 +342,8 @@
      "source": "https://bricscad.octave.com/industries/civil-engineering"
     },
     {
-     "name": "Civil points, point groups, description keys, survey database",
-     "status": "full",
+     "name": "Civil points, point groups, description keys (no survey database, no least-squares adjustment found)",
+     "status": "partial",
      "notes": "CIVILPOINT entities carry number, elevation, name, raw and expanded description and custom attributes, drawn by symbol and label styles; CIVILPOINTGROUP builds groups by wildcard name and elevation filters; points from CAD points, blocks (attribute mapping), object vertices, station/offset measures or ASCII import; CIVILPOINTEXPORT writes them out; no survey database or least-squares adjustment found (added from the editor's own web search on 2026-10-21)",
      "source": "https://help.bricsys.com/en-us/document/command-reference/c/civilpoint-command"
     },
@@ -539,7 +539,7 @@
     {
      "name": "User-reported V26 stability",
      "status": "partial",
-     "notes": "Forum thread reports crashes and slowdowns, mostly on macOS and Linux (anecdotal)",
+     "notes": "Forum thread reports crashes and slowdowns, mostly on macOS and Linux (anecdotal) The loudest crash threads (V25.1/V25.2 panning crashes with the MTFLAGS=0 workaround, AMD black screens) were on Windows; macOS and Linux reports add platform-specific problems (reconciled after the fact-check and critique, 2026-10-21)",
      "source": "https://forum.bricsys.com/discussion/comment/58591/"
     },
     {

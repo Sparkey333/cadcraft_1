@@ -1,6 +1,6 @@
 # Genesis: the land-development CAD, compared and planned
 
-> **Last reviewed:** 2026-10-21 · **Last updated:** 2026-10-21 · **Change:** major (first version) · **Scope:** CADCraft 0.10.0, Autodesk Civil 3D 2026, BricsCAD V26 Ultimate
+> **Last reviewed:** 2026-10-21 · **Last updated:** 2026-10-21 · **Change:** minor (second iteration: review fixes) · **Scope:** CADCraft 0.10.0, Autodesk Civil 3D 2027.1, BricsCAD V26 Ultimate (V27 launched 2026-10-20, noted)
 
 This folder holds the deep comparison between the four products this fork cares about, kept
 separate and then compared:
@@ -43,3 +43,4 @@ Appendix A, update the JSON files, regenerate, and add a row below.
 | Date | Change | Summary |
 |---|---|---|
 | 2026-10-21 | major | First version of the comparison, the Genesis plan, the research notes and the onboard-AI knowledge pack with BYOK |
+| 2026-10-21 | minor | Second iteration: a four-lens page review (90 findings, 69 verified) applied; counts reconciled with a repository grep (21 `catch_unwind` call sites, 100 hostile-named tests); complaint themes folded into a 20-theme matrix; product-by-product new/missing lists; Genesis identity card, concurrency, migration and price-point subsections; target-number provenance (Appendix A.4); knowledge pack learnings and iteration records extended |
