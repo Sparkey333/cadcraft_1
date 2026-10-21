@@ -17,6 +17,7 @@ separate and then compared:
 |---|---|
 | [`comparison.html`](comparison.html) | The analysis. Pure HTML and CSS (no scripts, no external resources); open it in any browser or print it. Sections: executive summary, method, one section per product, a head-to-head matrix (new versus missing), pooled reviews best and worst, the Genesis plan (principles, feature set, old-school and neo techniques, architecture, backlog from reviews, market and pricing, roadmap and risks), verification log and sources |
 | [`research/`](research/) | The research workers' working notes with every URL, one markdown file per topic, and the JSON summaries the page was generated from |
+| [`ai/`](ai/) | The onboard-AI knowledge pack: knowledge cards, a facts file and a Q&A set with sources, the BYOK provider guide (`ai/byok.md`: bring your own key for Anthropic, OpenAI, Google, Mistral, xAI, DeepSeek, Groq, OpenRouter, Together, Cohere, Azure, Bedrock, Vertex and local servers, with links to get keys), per-model iteration records, integration notes and the learnings log. Data only; CADCraft's code and agent instructions are unchanged |
 
 ## How it was made
 
@@ -41,4 +42,4 @@ Appendix A, update the JSON files, regenerate, and add a row below.
 
 | Date | Change | Summary |
 |---|---|---|
-| 2026-10-21 | major | First version of the comparison, the Genesis plan and the research notes |
+| 2026-10-21 | major | First version of the comparison, the Genesis plan, the research notes and the onboard-AI knowledge pack with BYOK |
