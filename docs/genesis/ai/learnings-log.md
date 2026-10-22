@@ -91,3 +91,42 @@
 - Reproduce upstream #540 (two instances saving the same file) on 0.10.0 and file the result.
 - Retrieve Reddit, Hacker News and YouTube sentiment through a reachable route; these were blocked.
 - Run `qa.jsonl` through a second provider from `byok.md` and add the first cross-model row.
+
+## 2026-10-22 · Third iteration: re-verify, track, and measure the pack across models
+
+### Readability re-verification (12 findings, 12 verified against the rebuilt page)
+- Six were already fixed by the second iteration; six had a residue the first fix missed, every one
+  a second copy of the same text elsewhere (a worker's version string, a complaint row shown in two
+  tables, a backlog counter-design cell, the table of contents). Lesson: when a fix changes a phrase,
+  grep the generated page for the old phrase before declaring it done; data rows reach the page
+  through more than one table.
+- Verifying against the current page rather than the original finding is the right check: it
+  separates "fixed", "half fixed" and "open" and yields an exact remaining edit.
+
+### Progress tracker
+- `docs/genesis/parity-tracker.md` is generated with the page from the same lists (matrix rows,
+  roadmap phases, critique follow-ups) plus a hand-maintained progress table, so the tracker cannot
+  drift from the page. CADCraft's own parity documents stay untouched.
+
+### Cross-model evaluation of the pack (36 questions, 4 models, 2 conditions, blind judge)
+- Closed-book scores: haiku 31 %, sonnet 51 %, opus 58 %, session model 58 %; refusals carried most
+  of the gap (21, 11, 10, 10 of 36) and no model hallucinated when told to say "unsure".
+- Open-book (the model reads the knowledge card) scored 100 % for every model with 97–100 % correct
+  citations. That is a ceiling, not a result: `qa.jsonl` was derived from the same cards, so open-book
+  measures whether the cards are complete and the model can find the row, which they are and it can.
+  The product lesson stands: the pack turns a 31–58 % assistant into a cited one; retrieval of the
+  right card is the whole problem for the in-app assistant, not model choice.
+- Closed-book citation rates were 0–8 %: without the pack the models cannot name a source even when
+  the answer is right. Any onboard assistant must ship with retrieval or it will answer unsourced.
+- Next evaluation must use held-out questions that are not paraphrases of the cards (the review
+  findings, the fact-check verdicts, and questions written by a design partner), two judges instead
+  of one, and at least one non-Anthropic provider through BYOK so "between AIs" means more than one
+  vendor.
+- The judge (opus) also graded its own answers; the opus rows carry that bias. Cost and token counts
+  were not metered by the harness; record them when the BYOK path runs through a provider that
+  returns usage.
+
+### Model continuity
+- From this iteration every delegated run is pinned to the Opus 5.5 alias, so the work continues
+  when the session model reaches its limit; the session model itself is switched by the owner. Every
+  record names the model that produced it.

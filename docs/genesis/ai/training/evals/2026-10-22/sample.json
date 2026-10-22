@@ -1,0 +1,367 @@
+{
+ "date": "2026-10-22",
+ "seed": 20261022,
+ "per_topic": 4,
+ "questions": [
+  {
+   "id": "q01",
+   "qa_row": 23,
+   "topic": "cadcraft",
+   "kind": "feature-status",
+   "card": "docs/genesis/ai/knowledge/cadcraft-facts.md",
+   "instruction": "Does CADCraft support TOLERANCE frames, annotative scaling?",
+   "expected": "Partly. no dialog; ANNORESET no-op (Evidence: docs/gaps.md F8, F12)",
+   "source": "docs/gaps.md F8, F12"
+  },
+  {
+   "id": "q02",
+   "qa_row": 37,
+   "topic": "cadcraft",
+   "kind": "feature-status",
+   "card": "docs/genesis/ai/knowledge/cadcraft-facts.md",
+   "instruction": "Does CADCraft support DWG 2000–2018 read/write via acadrust bridge?",
+   "expected": "Partly. drops custom-class objects, some xdata, colour books, reactors; never systematically verified in AutoCAD by the project (community issue #604 reports one round trip with 6 AUDIT errors); no real-file corpus; 10 MB file failed; not on web (Evidence: docs/gaps.md top-10 rows 1–2, FF6; crates/dwg/src/lib.rs)",
+   "source": "docs/gaps.md top-10 rows 1–2, FF6; crates/dwg/src/lib.rs"
+  },
+  {
+   "id": "q03",
+   "qa_row": 46,
+   "topic": "cadcraft",
+   "kind": "feature-status",
+   "card": "docs/genesis/ai/knowledge/cadcraft-facts.md",
+   "instruction": "Does CADCraft support COMPARE drawing compare?",
+   "expected": "Partly. 200k-object cap, active tab only, no report export (Evidence: cmd/file/compare.rs; docs/gaps.md F22)",
+   "source": "cmd/file/compare.rs; docs/gaps.md F22"
+  },
+  {
+   "id": "q04",
+   "qa_row": 75,
+   "topic": "cadcraft",
+   "kind": "feature-status",
+   "card": "docs/genesis/ai/knowledge/cadcraft-facts.md",
+   "instruction": "Does CADCraft support Drawing text: bidi/Arabic shaping, CJK fallback?",
+   "expected": "Partly. no Indic shaping, no vertical text, no SHX (Evidence: docs/localization-parity.md)",
+   "source": "docs/localization-parity.md"
+  },
+  {
+   "id": "q05",
+   "qa_row": 77,
+   "topic": "cadcraft-referencing",
+   "kind": "behaviour",
+   "card": "docs/genesis/ai/knowledge/cadcraft-referencing.md",
+   "instruction": "How does CADCraft handle XATTACH / -XREF attach, overlay, reload, unload, detach, path, type?",
+   "expected": "Status full: All options implemented with JSON and command-line forms; attach failure changes nothing (Evidence: crates/engine/src/cmd/blocks/xref.rs specs(); tests/xref.rs reload_unload_path_and_detach)",
+   "source": "crates/engine/src/cmd/blocks/xref.rs specs(); tests/xref.rs reload_unload_path_and_detach"
+  },
+  {
+   "id": "q06",
+   "qa_row": 80,
+   "topic": "cadcraft-referencing",
+   "kind": "behaviour",
+   "card": "docs/genesis/ai/knowledge/cadcraft-referencing.md",
+   "instruction": "How does CADCraft handle Nested, circular and oversized references?",
+   "expected": "Status full: Depth <= 16, cycle chain by canonical path, overlays not nested, file/byte/object caps (Evidence: load.rs fetch(); test circular_and_deeply_nested_references_are_bounded)",
+   "source": "load.rs fetch(); test circular_and_deeply_nested_references_are_bounded"
+  },
+  {
+   "id": "q07",
+   "qa_row": 91,
+   "topic": "cadcraft-referencing",
+   "kind": "behaviour",
+   "card": "docs/genesis/ai/knowledge/cadcraft-referencing.md",
+   "instruction": "How does CADCraft handle Fields, hyperlinks, dbConnect/OLE, DesignCenter, Excel links?",
+   "expected": "Status none: No command specs found (Evidence: grep crates/engine/src/cmd for field/hyperlink/adcenter)",
+   "source": "grep crates/engine/src/cmd for field/hyperlink/adcenter"
+  },
+  {
+   "id": "q08",
+   "qa_row": 92,
+   "topic": "cadcraft-referencing",
+   "kind": "behaviour",
+   "card": "docs/genesis/ai/knowledge/cadcraft-referencing.md",
+   "instruction": "How does CADCraft handle CSV exports (TABLEEXPORT, DATAEXTRACTION)?",
+   "expected": "Status full: One-way exports (Evidence: cmd/table/cells.rs; cmd/blocks/extract.rs)",
+   "source": "cmd/table/cells.rs; cmd/blocks/extract.rs"
+  },
+  {
+   "id": "q09",
+   "qa_row": 372,
+   "topic": "landdev",
+   "kind": "technique",
+   "card": "docs/genesis/ai/knowledge/landdev-domain.md",
+   "instruction": "What does a site-design CAD need to support the technique 'Passive solar siting and orientation'?",
+   "expected": "Sun-path diagram and solar altitude/azimuth for date and place (implement Reda-Andreas SPA from the NREL report, not NREL's C code), long-axis orientation check, overhang depth from sun angles, shadow casting from terrain/trees/neighbours (Source: NREL/TP-560-34302 as transcribed in pvlib spa.py (github.com/pvlib/pvlib-python); https://www.energy.gov/energysaver/passive-solar-home-design (unverified))",
+   "source": "NREL/TP-560-34302 as transcribed in pvlib spa.py (github.com/pvlib/pvlib-python); https://www.energy.gov/energysaver/passive-solar-home-design (unverified)"
+  },
+  {
+   "id": "q10",
+   "qa_row": 381,
+   "topic": "landdev",
+   "kind": "technique",
+   "card": "docs/genesis/ai/knowledge/landdev-domain.md",
+   "instruction": "What does a site-design CAD need to support the technique 'Magnetic bearings in old deeds'?",
+   "expected": "Declination for date and place to rotate magnetic calls to true or grid north (Source: NOAA NCEI geomagnetic calculator https://www.ngdc.noaa.gov/geomag/calculators/magcalc.shtml (unverified))",
+   "source": "NOAA NCEI geomagnetic calculator https://www.ngdc.noaa.gov/geomag/calculators/magcalc.shtml (unverified)"
+  },
+  {
+   "id": "q11",
+   "qa_row": 390,
+   "topic": "landdev",
+   "kind": "technique",
+   "card": "docs/genesis/ai/knowledge/landdev-domain.md",
+   "instruction": "What does a site-design CAD need to support the technique 'Agrivoltaics'?",
+   "expected": "Elevated PV rows with crop strips, equipment row spacing, shading map for crop light (Source: NREL InSPIRE https://openei.org/wiki/InSPIRE (unverified))",
+   "source": "NREL InSPIRE https://openei.org/wiki/InSPIRE (unverified)"
+  },
+  {
+   "id": "q12",
+   "qa_row": 434,
+   "topic": "landdev",
+   "kind": "requirement",
+   "card": "docs/genesis/ai/knowledge/landdev-domain.md",
+   "instruction": "Why does a land-development CAD need 'Parametric zoning rule set (setbacks by yard, impervious %, coverage, height, parking ratios, buffers, well/septic/stream setbacks) with live compliance report' (Site rules)?",
+   "expected": "Priority must: Genesis differentiator; done in spreadsheets today and a top source of resubmittals Data source: ",
+   "source": ""
+  },
+  {
+   "id": "q13",
+   "qa_row": 203,
+   "topic": "research:bricscad-features",
+   "kind": "competitor-feature",
+   "card": "docs/genesis/ai/knowledge/bricscad-facts.md",
+   "instruction": "Does BricsCAD have PDF underlay and PDF import?",
+   "expected": "Status full: unverified (background knowledge; page fetch blocked, search budget exhausted) (Source: None)",
+   "source": null
+  },
+  {
+   "id": "q14",
+   "qa_row": 218,
+   "topic": "research:bricscad-features",
+   "kind": "competitor-feature",
+   "card": "docs/genesis/ai/knowledge/bricscad-facts.md",
+   "instruction": "Does BricsCAD have TIN surfaces (create, edit, merge, contours, mesh extraction)?",
+   "expected": "Status full: TIN and TINEDIT commands; breaklines and boundaries supported (Source: https://help.bricsys.com/en-us/document/bricscad/civil-tools/civil-commands)",
+   "source": "https://help.bricsys.com/en-us/document/bricscad/civil-tools/civil-commands"
+  },
+  {
+   "id": "q15",
+   "qa_row": 260,
+   "topic": "research:bricscad-features",
+   "kind": "competitor-feature",
+   "card": "docs/genesis/ai/knowledge/bricscad-facts.md",
+   "instruction": "Does BricsCAD have Support desk via maintenance/subscription and reseller network?",
+   "expected": "Status full: Policy recently changed per forum thread title; details unread (Source: https://forum.bricsys.com/discussion/39918/the-new-upgrade-and-support-policy-a-cynical-move)",
+   "source": "https://forum.bricsys.com/discussion/39918/the-new-upgrade-and-support-policy-a-cynical-move"
+  },
+  {
+   "id": "q16",
+   "qa_row": 268,
+   "topic": "research:bricscad-features",
+   "kind": "price",
+   "card": "docs/genesis/ai/knowledge/bricscad-facts.md",
+   "instruction": "What does BricsCAD cost (Ultimate perpetual (UK reseller))?",
+   "expected": "GBP 2,257 (CAD Software Direct); GBP 1,890 incl. first-year maintenance (Brighter Graphics) - two reseller prices disagree (Source: https://www.cadsoftwaredirect.com/cad-modelling/buy-bricsys-bricscad/bricscad-ultimate; read 2026-10-21; verify before buying)",
+   "source": "https://www.cadsoftwaredirect.com/cad-modelling/buy-bricsys-bricscad/bricscad-ultimate"
+  },
+  {
+   "id": "q17",
+   "qa_row": 297,
+   "topic": "research:bricscad-reviews",
+   "kind": "complaint",
+   "card": "docs/genesis/ai/knowledge/bricscad-reviews.md",
+   "instruction": "What do users complain about regarding Linux build second-class in BricsCAD?",
+   "expected": "Severity medium: Wayland black window plus crash report with GDK assertion on 25.2.03; users say Linux and Mac share the same GUI flaws and unexpected crashes and do not match the Windows experience; desktop-integration quality thread. (Source: https://forum.bricsys.com/discussion/39653/wayland-black-window-and-crash-report ; https://forum.bricsys.com/discussion/38446/first-expirience-with-bricscad-on-linux ; https://forum.bricsys.com/discussion/35751/quality-of-bricscad-desktop-integration)",
+   "source": "https://forum.bricsys.com/discussion/39653/wayland-black-window-and-crash-report ; https://forum.bricsys.com/discussion/38446/first-expirience-with-bricscad-on-linux ; https://forum.bricsys.com/discussion/35751/quality-of-bricscad-desktop-integration"
+  },
+  {
+   "id": "q18",
+   "qa_row": 313,
+   "topic": "research:bricscad-reviews",
+   "kind": "praise",
+   "card": "docs/genesis/ai/knowledge/bricscad-reviews.md",
+   "instruction": "What do users praise about BricsCAD: Setup and support (positive half)?",
+   "expected": "G2 AI summaries score ease of setup 9.1 and quality of support 9.0; the MTFLAGS=0 crash workaround came from Bricsys support engaging on the forum. (Source: https://www.g2.com/compare/bricscad-vs-solidworks ; https://forum.bricsys.com/discussion/39491/panning-and-crashing)",
+   "source": "https://www.g2.com/compare/bricscad-vs-solidworks ; https://forum.bricsys.com/discussion/39491/panning-and-crashing"
+  },
+  {
+   "id": "q19",
+   "qa_row": 315,
+   "topic": "research:bricscad-reviews",
+   "kind": "praise",
+   "card": "docs/genesis/ai/knowledge/bricscad-reviews.md",
+   "instruction": "What do users praise about BricsCAD: V26 maturation and speed?",
+   "expected": "Independent Drafting Bench review calls V26 'a year of maturation' (released 26 Oct 2025; V26.2 on 31 Mar 2026 carried most new capability incl. AI 'BricsCAD Assist' panel and dynamic-block creation). Vendor claims 60+ features, up to 25x faster 3D solid edits and 2.7-2.8x faster DWG file ops - unverified company figures. (Source: https://draftingbench.com/bricscad-v26-review/ ; https://www.augi.com/articles/detail/whats-new-in-bricscad-v26)",
+   "source": "https://draftingbench.com/bricscad-v26-review/ ; https://www.augi.com/articles/detail/whats-new-in-bricscad-v26"
+  },
+  {
+   "id": "q20",
+   "qa_row": 317,
+   "topic": "research:bricscad-reviews",
+   "kind": "praise",
+   "card": "docs/genesis/ai/knowledge/bricscad-reviews.md",
+   "instruction": "What do users praise about BricsCAD: LISP runs, and runs faster (added from the editor's own web search on 2026-10-21)?",
+   "expected": "Consultants who migrated large custom environments report nearly all AutoLISP files ran unchanged, with minor system-variable and command-line differences; one benchmark had a routine run three times faster than in AutoCAD (vendor-affiliated sources) (Source: https://forum.bricsys.com/discussion/38040/lisp-behaviour-in-bricscad-vs-autocad)",
+   "source": "https://forum.bricsys.com/discussion/38040/lisp-behaviour-in-bricscad-vs-autocad"
+  },
+  {
+   "id": "q21",
+   "qa_row": 130,
+   "topic": "research:civil3d-features",
+   "kind": "competitor-feature",
+   "card": "docs/genesis/ai/knowledge/civil3d-facts.md",
+   "instruction": "Does Autodesk Civil 3D have Map check / inverse analysis?",
+   "expected": "Status full: Export Parcel Analysis and Map Check Report with POB override, across-chord, CW/CCW, error of closure; survey Mapcheck Analysis from labels (Source: https://help.autodesk.com/view/CIV3D/2027/ENU/?guid=GUID-3D99202F-BDD3-4585-89E1-02DE47ECFD3A)",
+   "source": "https://help.autodesk.com/view/CIV3D/2027/ENU/?guid=GUID-3D99202F-BDD3-4585-89E1-02DE47ECFD3A"
+  },
+  {
+   "id": "q22",
+   "qa_row": 133,
+   "topic": "research:civil3d-features",
+   "kind": "competitor-feature",
+   "card": "docs/genesis/ai/knowledge/civil3d-facts.md",
+   "instruction": "Does Autodesk Civil 3D have Superelevation & cant?",
+   "expected": "Status full: Wizard with roadway types, pivot methods, rate tables or formula, transition tables, overlap resolution, curve manager/tabular editor, superelevation views; rail cant (Source: https://help.autodesk.com/view/CIV3D/2027/ENU/?guid=GUID-43CA7259-D1EF-46F4-B6B1-F2A7F112446D)",
+   "source": "https://help.autodesk.com/view/CIV3D/2027/ENU/?guid=GUID-43CA7259-D1EF-46F4-B6B1-F2A7F112446D"
+  },
+  {
+   "id": "q23",
+   "qa_row": 153,
+   "topic": "research:civil3d-features",
+   "kind": "competitor-feature",
+   "card": "docs/genesis/ai/knowledge/civil3d-facts.md",
+   "instruction": "Does Autodesk Civil 3D have Vault Professional integration?",
+   "expected": "Status full: Check-in/out and project references; 2027 side-by-side Vault issue requires Vault 2026.3 (Source: https://help.autodesk.com/view/CIV3D/2027/ENU/?guid=GUID-31E17435-0D68-4ACE-A4AB-4ECCA0B31658)",
+   "source": "https://help.autodesk.com/view/CIV3D/2027/ENU/?guid=GUID-31E17435-0D68-4ACE-A4AB-4ECCA0B31658"
+  },
+  {
+   "id": "q24",
+   "qa_row": 169,
+   "topic": "research:civil3d-features",
+   "kind": "competitor-feature",
+   "card": "docs/genesis/ai/knowledge/civil3d-facts.md",
+   "instruction": "Does Autodesk Civil 3D have Old-school building techniques (vernacular, dry-stone, rammed earth, keyline/swales)?",
+   "expected": "Status none: Only generic grading/feature-line/subassembly tools; no specific content (Source: https://help.autodesk.com/view/CIV3D/2027/ENU/?guid=GUID-3104F008-410E-4F4B-B3F4-575184CEC138)",
+   "source": "https://help.autodesk.com/view/CIV3D/2027/ENU/?guid=GUID-3104F008-410E-4F4B-B3F4-575184CEC138"
+  },
+  {
+   "id": "q25",
+   "qa_row": 275,
+   "topic": "research:civil3d-reviews",
+   "kind": "complaint",
+   "card": "docs/genesis/ai/knowledge/civil3d-reviews.md",
+   "instruction": "What do users complain about regarding File bloat, corruption, AUDIT/RECOVER habits in Civil 3D?",
+   "expected": "Severity high: 2025 thread: accidental paste of a corridor as a block grew a file from 20 MB to 1.6 GB; RegApps bloat (>100,000 REGAPPS seen; purge halved a 20k-regapp file); unexplained growth cured by AeccPurgeAcaNodObjects; data-shortcut surfaces default to saving a copy in the consuming drawing. DOT guides prescribe routine PURGE -> AUDIT -> RECOVER, deleting stale .dwl/.dwl2 lock files, RECOVERALL, WBLOCK rebuild; AUDIT itself can hang; crash mid-save truncates the DWG beyond repair (rely on .bak). Survey databases corrupt when copied to shares and lock out all other users while one edits. (Source: https://forums.autodesk.com/t5/civil-3d-forum/urgent-file-size-is-huge/td-p/13769483 ; https://forums.autodesk.com/t5/civil-3d-forum/civil-3d-2020-21-and-22-file-size-bloating-drawing-only-includes/td-p/11750362 ; https://c3dkb.dot.wi.gov/Content/c3d/fil-sftwr-mgt/fil-sftwr-mgt-fix-dmgd-crpt-dwgs.htm ; https://ftp.mdt.mt.gov/other/webdata/external/esdc/library/Support-Civil3DUserMaintenanceSupport.pdf ; https://forums.augi.com/showthread.php?176841-Unable-to-recover-drawing-quot-Drawing-file-is-not-valid-quot)",
+   "source": "https://forums.autodesk.com/t5/civil-3d-forum/urgent-file-size-is-huge/td-p/13769483 ; https://forums.autodesk.com/t5/civil-3d-forum/civil-3d-2020-21-and-22-file-size-bloating-drawing-only-includes/td-p/11750362 ; https://c3dkb.dot.wi.gov/Content/c3d/fil-sftwr-mgt/fil-sftwr-mgt-fix-dmgd-crpt-dwgs.htm ; https://ftp.mdt.mt.gov/other/webdata/external/esdc/library/Support-Civil3DUserMaintenanceSupport.pdf ; https://forums.augi.com/showthread.php?176841-Unable-to-recover-drawing-quot-Drawing-file-is-not-valid-quot"
+  },
+  {
+   "id": "q26",
+   "qa_row": 278,
+   "topic": "research:civil3d-reviews",
+   "kind": "complaint",
+   "card": "docs/genesis/ai/knowledge/civil3d-reviews.md",
+   "instruction": "What do users complain about regarding Collaboration: ACC/Autodesk Docs, Desktop Connector, Vault in Civil 3D?",
+   "expected": "Severity medium: Desktop Connector 16.x: stale locks after crash/shutdown, slow or stuck syncs, duplicates, files that 'keep locking themselves'; Autodesk documents cases where changes are 'not uploaded to Autodesk Docs and the data is lost'; partial syncs open older versions; 'write protected' errors in 2026. Collaboration for Civil 3D requires the Pro tier (now Forma Design Collaboration), and repeated renames (BIM 360 -> ACC -> Forma) make users wary. Vault threads report shared surfaces missing after check-in and slow check-in/out with bloated files. (Source: https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/Locking-and-Syncing-issues-in-Desktop-Connector-v16-x.html ; https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/Losing-data-when-working-with-DWG-files-in-Desktop-Connector.html ; https://forums.autodesk.com/t5/civil-3d-forum/civil-3d-files-on-acc-keep-locking-themselves/td-p/12972908 ; https://www.manandmachine.co.uk/autodesk-bim-collaborate-vs-bim-collaborate-pro/)",
+   "source": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/Locking-and-Syncing-issues-in-Desktop-Connector-v16-x.html ; https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/Losing-data-when-working-with-DWG-files-in-Desktop-Connector.html ; https://forums.autodesk.com/t5/civil-3d-forum/civil-3d-files-on-acc-keep-locking-themselves/td-p/12972908 ; https://www.manandmachine.co.uk/autodesk-bim-collaborate-vs-bim-collaborate-pro/"
+  },
+  {
+   "id": "q27",
+   "qa_row": 286,
+   "topic": "research:civil3d-reviews",
+   "kind": "complaint",
+   "card": "docs/genesis/ai/knowledge/civil3d-reviews.md",
+   "instruction": "What do users complain about regarding Surveyor-specific dissatisfaction in Civil 3D?",
+   "expected": "Severity medium: RPLS surveyors: 'good modelling and drafting software, but lousy surveying software; Carlson is far better'; 'hated every time' used for survey work; sluggish, twitchy graphics; survey DB and smart objects 'add complexity without much return'; 'Autodesk cares nothing about Surveying'. (Source: https://rpls.com/forums/software-cad-mapping/least-squares-adjustment-autocad-civil-3d/ ; https://rpls.com/forums/software-cad-mapping/does-civil-3d-provide-value-to-the-typical-surveyor/ ; https://rpls.com/forums/software-cad-mapping/carlson-survey-and-civil-3d-compatability/)",
+   "source": "https://rpls.com/forums/software-cad-mapping/least-squares-adjustment-autocad-civil-3d/ ; https://rpls.com/forums/software-cad-mapping/does-civil-3d-provide-value-to-the-typical-surveyor/ ; https://rpls.com/forums/software-cad-mapping/carlson-survey-and-civil-3d-compatability/"
+  },
+  {
+   "id": "q28",
+   "qa_row": 290,
+   "topic": "research:civil3d-reviews",
+   "kind": "praise",
+   "card": "docs/genesis/ai/knowledge/civil3d-reviews.md",
+   "instruction": "What do users praise about Civil 3D: Recent performance and tooling gains (vendor-stated, partly user-echoed)?",
+   "expected": "2025/2025.1: corridor surface builds 3-4x faster, object-snap moves on large corridors claimed 20-80x faster, MMS cache written only on change; Dynamo gained 1,120 nodes; 2026 added a modeless 3D viewer, Project Explorer Object Sets from the command line, corridor transition control, surface/corridor transparency and InfoDrainage-based drainage analysis. (Source: https://www.autodesk.com/blogs/aec/2024/08/19/whats-new-in-civil-3d-2025-1/ ; https://www.symetri.co.uk/insights/blog/whats-new-in-autodesk-civil-3d-2025/ ; https://www.autodesk.com/blogs/aec/2025/12/11/whats-new-in-civil-3d-2026-2)",
+   "source": "https://www.autodesk.com/blogs/aec/2024/08/19/whats-new-in-civil-3d-2025-1/ ; https://www.symetri.co.uk/insights/blog/whats-new-in-autodesk-civil-3d-2025/ ; https://www.autodesk.com/blogs/aec/2025/12/11/whats-new-in-civil-3d-2026-2"
+  },
+  {
+   "id": "q29",
+   "qa_row": 346,
+   "topic": "research:market-and-stability",
+   "kind": "complaint",
+   "card": "docs/genesis/ai/knowledge/market-and-stability.md",
+   "instruction": "What do users complain about regarding Crash volume is structural, not incidental in CAD products in general?",
+   "expected": "Severity high: Autodesk's own fixed-issue lists carry ~17 crash/hang fixes in Civil 3D 2027.1 alone, ~12 in 2027, ~15 in 2026.1 and ~11 in 2026.2; 2024.3 fixed two cases where alignment data was lost after save and reopen. Forum users report weekly to daily crashes in 2026. (Source: https://help.autodesk.com/view/CIV3D/2027/ENU/?guid=civil_3d_fixed_issues_2027_1; https://help.autodesk.com/view/CIV3D/2026/ENU/?guid=civil_3d_fixed_issues_2026_1; https://forums.autodesk.com/t5/civil-3d-forum/civil-3d-2026-crashing/td-p/14083638)",
+   "source": "https://help.autodesk.com/view/CIV3D/2027/ENU/?guid=civil_3d_fixed_issues_2027_1; https://help.autodesk.com/view/CIV3D/2026/ENU/?guid=civil_3d_fixed_issues_2026_1; https://forums.autodesk.com/t5/civil-3d-forum/civil-3d-2026-crashing/td-p/14083638"
+  },
+  {
+   "id": "q30",
+   "qa_row": 349,
+   "topic": "research:market-and-stability",
+   "kind": "complaint",
+   "card": "docs/genesis/ai/knowledge/market-and-stability.md",
+   "instruction": "What do users complain about regarding Xref paths break on move, drive mapping, permissions, cloud cache or VPN in CAD products in general?",
+   "expected": "Severity high: Relative paths are unavailable across drives or servers and can fail because 'automatic save is too frequent'; unresolved-xref causes include mapped-vs-UNC, drive letters hijacked by USB devices, paths over 256 chars, stopped DNS services; after a server migration opening drawings can freeze, with the advice to unplug the network cable; the Reference Manager bulk-repaths with no undo. (Source: https://help.autodesk.com/view/ACD/2027/ENU/?guid=GUID-164C2548-91E6-476D-AFDF-6257340C2EE2; https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/XREF-in-AutoCAD-is-Unresolved.html; https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/When-trying-to-attach-a-drawing-as-external-reference-with-a-relative-path-the-message-appears-Relative-path-cannot-be-assigned.html)",
+   "source": "https://help.autodesk.com/view/ACD/2027/ENU/?guid=GUID-164C2548-91E6-476D-AFDF-6257340C2EE2; https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/XREF-in-AutoCAD-is-Unresolved.html; https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/When-trying-to-attach-a-drawing-as-external-reference-with-a-relative-path-the-message-appears-Relative-path-cannot-be-assigned.html"
+  },
+  {
+   "id": "q31",
+   "qa_row": 350,
+   "topic": "research:market-and-stability",
+   "kind": "complaint",
+   "card": "docs/genesis/ai/knowledge/market-and-stability.md",
+   "instruction": "What do users complain about regarding Cloud worksharing discards local work in CAD products in general?",
+   "expected": "Severity high: Desktop Connector sync failures leave files 'Modified' and invisible to co-workers; a 'Conflict' gives priority to the cloud copy and local changes go to the Recycle Bin; 'Free Up Space' before sync deletes unsynced work; file locking is unsupported on long paths; the shortcut-sync balloon can appear before upload finishes so clicking it loads stale data. (Source: https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/Losing-data-when-working-with-DWG-files-in-Desktop-Connector.html; https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/File-shows-Conflict-State-in-Desktop-Connector.html; https://help.autodesk.com/view/CIV3D/2023/ENU/?guid=Civil3D_ReleaseNotes_2023_2_1_Release_Notes_2023_2_1_known_issues_html)",
+   "source": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/Losing-data-when-working-with-DWG-files-in-Desktop-Connector.html; https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/File-shows-Conflict-State-in-Desktop-Connector.html; https://help.autodesk.com/view/CIV3D/2023/ENU/?guid=Civil3D_ReleaseNotes_2023_2_1_Release_Notes_2023_2_1_known_issues_html"
+  },
+  {
+   "id": "q32",
+   "qa_row": 357,
+   "topic": "research:market-and-stability",
+   "kind": "complaint",
+   "card": "docs/genesis/ai/knowledge/market-and-stability.md",
+   "instruction": "What do users complain about regarding Open-source commercialisation is fragile in CAD products in general?",
+   "expected": "Severity low: Blender ran at a loss in 2024 with reserves below target despite record income; the VC-backed FreeCAD company Ondsel shut down in Dec 2024 after its hosted SaaS failed to reach sustainable revenue (unverified, from memory). (Source: https://80.lv/articles/blender-reports-operating-at-a-loss-in-2024; https://ondsel.com/blog/goodbye/ (unverified))",
+   "source": "https://80.lv/articles/blender-reports-operating-at-a-loss-in-2024; https://ondsel.com/blog/goodbye/ (unverified)"
+  },
+  {
+   "id": "q33",
+   "qa_row": 319,
+   "topic": "research:opensource-reviews",
+   "kind": "complaint",
+   "card": "docs/genesis/ai/knowledge/opensource-cad-reviews.md",
+   "instruction": "What do users complain about regarding FreeCAD topological naming mitigated, not solved in open-source CAD programs?",
+   "expected": "Severity high: Issue #29154 (Apr 2026, 1.1 dev): shortening a pad flipped a sketch dimension and broke pockets, chamfers and fillets; a member says TNP 'can be mitigated but not fully fixed'; V2 algorithm (PR #31040) still in progress; 8 of 19 toponaming issues since 2025 remain open. (Source: https://github.com/FreeCAD/FreeCAD/issues/29154)",
+   "source": "https://github.com/FreeCAD/FreeCAD/issues/29154"
+  },
+  {
+   "id": "q34",
+   "qa_row": 329,
+   "topic": "research:opensource-reviews",
+   "kind": "complaint",
+   "card": "docs/genesis/ai/knowledge/opensource-cad-reviews.md",
+   "instruction": "What do users complain about regarding CADCraft performance and memory on real DWGs and xrefs in open-source CAD programs?",
+   "expected": "Severity high: #1076: 47.8 MB DWG (985k entities) takes ~19.6 s headless, 22-28 s to appear, peaks 4.5-5.1 GB on an M1 Pro; intermediate DXF text 5.8x the input is built fully in memory. #1625 (0.8.0): a 76.8 MB xref attached to a 39.9 MB plan freezes the window 34 of 90 s and peaks at 8.4 GB; no human reply. #752: 'even mouse movement is choppy', whole PC freezes; AutoCAD handles files 4x larger smoothly. (Source: https://github.com/storytold/cadcraft/issues/1076 ; https://github.com/storytold/cadcraft/issues/1625 ; https://github.com/storytold/cadcraft/issues/752)",
+   "source": "https://github.com/storytold/cadcraft/issues/1076 ; https://github.com/storytold/cadcraft/issues/1625 ; https://github.com/storytold/cadcraft/issues/752"
+  },
+  {
+   "id": "q35",
+   "qa_row": 333,
+   "topic": "research:opensource-reviews",
+   "kind": "complaint",
+   "card": "docs/genesis/ai/knowledge/opensource-cad-reviews.md",
+   "instruction": "What do users complain about regarding CADCraft input model and UI vs AutoCAD habits in open-source CAD programs?",
+   "expected": "Severity medium: #1001: clicks lost while the mouse is moving in TRIM/STRETCH/LINE/MOVE/COPY and window selection; users must stop before clicking (fix PR #1555 under review). #729: panels cannot dock, Layer Properties Manager floats over the canvas, no saved workspaces. #1134: constraint tools existed but were undiscoverable; Fix did not hold a point; visibility checkbox inverted. Also no interactive DIMSTYLE (#850), PLOT dialog missing (#429), right-click Enter (#1387), printing in non-inch units broken (#1828). (Source: https://github.com/storytold/cadcraft/issues/1001 ; https://github.com/storytold/cadcraft/issues/729 ; https://github.com/storytold/cadcraft/issues/1134)",
+   "source": "https://github.com/storytold/cadcraft/issues/1001 ; https://github.com/storytold/cadcraft/issues/729 ; https://github.com/storytold/cadcraft/issues/1134"
+  },
+  {
+   "id": "q36",
+   "qa_row": 336,
+   "topic": "research:opensource-reviews",
+   "kind": "complaint",
+   "card": "docs/genesis/ai/knowledge/opensource-cad-reviews.md",
+   "instruction": "What do users complain about regarding No open-source civil/site stack; QGIS is a complement in open-source CAD programs?",
+   "expected": "Severity high: Guides describe QGIS as 'an open-source GIS platform rather than a CAD application' used alongside Civil 3D for catchments and mapping, lacking grading/corridor/drafting tools; surveyors prefer Carlson for daily work but must hand files to Civil 3D users. Only FreeCAD Trails offers surfaces/alignments in open source. (Source: https://equatorstudios.com/the-next-generation-of-gis-tools-create-professional-maps-in-minutes/ ; https://www.lfinditech.com/blog/best-cad-software-for-land-surveyors)",
+   "source": "https://equatorstudios.com/the-next-generation-of-gis-tools-create-professional-maps-in-minutes/ ; https://www.lfinditech.com/blog/best-cad-software-for-land-surveyors"
+  }
+ ]
+}
