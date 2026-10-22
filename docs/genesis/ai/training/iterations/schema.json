@@ -1,0 +1,91 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "Onboard-AI iteration record",
+ "type": "object",
+ "required": [
+  "date",
+  "provider",
+  "model",
+  "role",
+  "task",
+  "outcome"
+ ],
+ "properties": {
+  "date": {
+   "type": "string",
+   "format": "date"
+  },
+  "session": {
+   "type": "string",
+   "description": "free-form session or run identifier"
+  },
+  "provider": {
+   "type": "string",
+   "description": "anthropic | openai | gemini | mistral | xai | deepseek | groq | openrouter | together | fireworks | cohere | huggingface | azure | bedrock | vertex | ollama | lmstudio | other"
+  },
+  "model": {
+   "type": "string"
+  },
+  "role": {
+   "type": "string",
+   "description": "orchestrator | research-worker | fact-checker | reviewer | assistant | eval"
+  },
+  "task": {
+   "type": "string"
+  },
+  "inputs": {
+   "type": "string"
+  },
+  "tool_uses": {
+   "type": "integer"
+  },
+  "duration_s": {
+   "type": "number"
+  },
+  "tokens": {
+   "type": "object",
+   "properties": {
+    "input": {
+     "type": "integer"
+    },
+    "output": {
+     "type": "integer"
+    },
+    "total": {
+     "type": "integer"
+    }
+   }
+  },
+  "cost_usd": {
+   "type": "number"
+  },
+  "outcome": {
+   "type": "string"
+  },
+  "citations_ok": {
+   "type": "boolean"
+  },
+  "corrections": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "lessons": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "caveats": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "compare_group": {
+   "type": "string",
+   "description": "same value on records that ran the same task on different models"
+  }
+ }
+}
