@@ -8,7 +8,7 @@ BricsCAD V26 is an AutoCAD-compatible DWG CAD sold in five inheriting editions (
 
 ## Version
 
-V27 (launch keynote 20 October 2026; Windows release notes already at build 27.1.05) from Octave, the company Bricsys became in 2026 as a Hexagon spin-off. The inventory below was researched against V26 (October 2025, V26.2 March 2026) and marks V27 additions where known; V27 pricing was not re-checked (editor's own search, 2026-10-21)
+V27 (launch keynote 20 October 2026; Windows release notes already at build 27.1.05). The inventory below was researched against V26 (October 2025, V26.2 March 2026) and marks V27 additions where known; V27 pricing was not re-checked (editor's own search, 2026-10-21)
 
 ## Platforms
 

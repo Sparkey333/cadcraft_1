@@ -1,6 +1,6 @@
 # Onboard AI knowledge pack (data only)
 
-> **Last reviewed:** 2026-10-21 · **Last updated:** 2026-10-21 · **Change:** major (first version)
+> **Last reviewed:** 2026-10-22 · **Last updated:** 2026-10-22 · **Change:** minor (third iteration: cross-model evaluation added; first version 2026-10-21)
 
 This folder holds what CADCraft's onboard AI (today: any agent driving the app over MCP or the
 control channel; tomorrow: an in-app assistant, see `docs/gaps.md` A2) should **know**, kept as
@@ -15,6 +15,7 @@ agent instructions (`AGENTS.md`, `CLAUDE.md`); those stay as they are until the 
 | `training/qa.jsonl` | Instruction/response pairs derived from the facts, every answer citing its source | Fine-tuning or few-shot material; evaluation set |
 | `byok.md` | Bring your own key: providers, where to get keys, endpoints, a `providers.toml` proposal, privacy rules, for CADCraft (via MCP clients) and Genesis (in-app) | Users and the assistant implementation |
 | `training/iterations/` | One record per AI run, per model, plus `comparisons.md` for cross-model scoring | Review after every iteration |
+| `training/evals/<date>/` | A frozen evaluation: the question sample, every model's answers with blind grades, and a summary table (closed-book versus open-book, so the pack's lift is measured) | Re-run with the same seed when a model or the pack changes |
 | `integration.md` | How to wire the pack into the onboard AI without code changes, and what a later code integration could look like | Owner decision |
 | `learnings-log.md` | Append-only log of what each iteration learned about the repo, the tooling and the data | Keep appending |
 

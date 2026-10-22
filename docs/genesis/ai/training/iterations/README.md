@@ -13,5 +13,5 @@ Procedure after each iteration:
 
 1. Append the records (never edit old ones; add a correcting record instead).
 2. Fold corrections into `../../knowledge/*.md` and `../qa.jsonl`.
-3. Re-run `../qa.jsonl` against each configured model and add a row to `comparisons.md`.
+3. Re-run the sample in `../evals/<date>/sample.json` (or a new one with a recorded seed) against each configured model, grade it blind, and add a row to `comparisons.md`; the 2026-10-22 run is the template.
 4. Append a block to `../../learnings-log.md`.

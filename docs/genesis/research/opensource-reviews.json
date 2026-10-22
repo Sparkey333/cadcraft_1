@@ -233,7 +233,7 @@
   },
   {
    "theme": "CADCraft feedback loop loses the reporter",
-   "detail": "Bug reports arrive via Discord and are relayed by a bot; reporters often have no GitHub account so replies never reach them (#752, #1636, #1824, #738); several maintainer replies are labelled as written by Claude Code on a contributor's behalf; Discussions are disabled; (the fact-check corrected an earlier note: the Releases tab does list eight releases, v0.1.0 to v0.10.0).",
+   "detail": "Bug reports arrive via Discord and are relayed by a bot; reporters often have no GitHub account so replies never reach them (#752, #1636, #1824, #738); several maintainer replies are labelled as written by Claude Code on a contributor's behalf; Discussions are disabled.",
    "source": "https://github.com/storytold/cadcraft/issues/752 ; https://github.com/storytold/cadcraft/discussions",
    "severity": "medium"
   },

@@ -15,7 +15,7 @@ done by this pack.
 - **System prompt.** Give the agent `knowledge/cadcraft-facts.md` and
   `knowledge/cadcraft-referencing.md` with the MCP tool list. Both are measured facts about this
   codebase, so the agent stops guessing what happens on a missing xref, a hostile DXF or a concurrent
-  save. For site work add `knowledge/landdev-domain.md` and `knowledge/open-data.md`.
+  save. For site work add `knowledge/landdev-domain.md`, whose open-data table lists the public datasets with licences.
 - **Retrieval.** Index `training/facts.jsonl` (one JSON object per line, fields `fact`/`feature`/
   `dataset`, `source`, `date`, `checked`, `refuted`, `correction`). A retrieval step before each
   answer lets the assistant cite the row it used.

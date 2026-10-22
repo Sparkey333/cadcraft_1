@@ -1,6 +1,6 @@
 # Genesis: the land-development CAD, compared and planned
 
-> **Last reviewed:** 2026-10-21 · **Last updated:** 2026-10-21 · **Change:** minor (second iteration: review fixes) · **Scope:** CADCraft 0.10.0, Autodesk Civil 3D 2027.1, BricsCAD V26 Ultimate (V27 launched 2026-10-20, noted)
+> **Last reviewed:** 2026-10-22 · **Last updated:** 2026-10-22 · **Change:** minor (third iteration: readability residue, parity tracker, cross-model evaluation) · **Scope:** CADCraft 0.10.0, Autodesk Civil 3D 2027.1, BricsCAD V26 Ultimate (V27 launched 2026-10-20, noted)
 
 This folder holds the deep comparison between the four products this fork cares about, kept
 separate and then compared:
@@ -16,6 +16,7 @@ separate and then compared:
 | File | What it is |
 |---|---|
 | [`comparison.html`](comparison.html) | The analysis. Pure HTML and CSS (no scripts, no external resources); open it in any browser or print it. Sections: executive summary, method, one section per product, a head-to-head matrix (new versus missing), pooled reviews best and worst, the Genesis plan (principles, feature set, old-school and neo techniques, architecture, backlog from reviews, market and pricing, roadmap and risks), verification log and sources |
+| [`parity-tracker.md`](parity-tracker.md) | The feature parity and progress tracker: what this effort has done and what remains, every head-to-head feature with CADCraft's status today, the Genesis target and build status by roadmap phase, research follow-ups with priority, the review ledger and model continuity. Regenerated with the page |
 | [`research/`](research/) | The research workers' working notes with every URL, one markdown file per topic, and the JSON summaries the page was generated from |
 | [`ai/`](ai/) | The onboard-AI knowledge pack: knowledge cards, a facts file and a Q&A set with sources, the BYOK provider guide (`ai/byok.md`: bring your own key for Anthropic, OpenAI, Google, Mistral, xAI, DeepSeek, Groq, OpenRouter, Together, Cohere, Azure, Bedrock, Vertex and local servers, with links to get keys), per-model iteration records, integration notes and the learnings log. Data only; CADCraft's code and agent instructions are unchanged |
 
@@ -43,4 +44,5 @@ Appendix A, update the JSON files, regenerate, and add a row below.
 | Date | Change | Summary |
 |---|---|---|
 | 2026-10-21 | major | First version of the comparison, the Genesis plan, the research notes and the onboard-AI knowledge pack with BYOK |
+| 2026-10-22 | minor | Third iteration: the twelve readability findings re-verified against the rebuilt page (six residues applied); `parity-tracker.md` added with progress, feature parity with build status and phases, follow-ups, review ledger and model continuity; cross-model evaluation of the knowledge pack (four models, closed- and open-book) recorded under `ai/training/evals/` |
 | 2026-10-21 | minor | Second iteration: a four-lens page review (90 findings, 69 verified) applied; counts reconciled with a repository grep (21 `catch_unwind` call sites, 100 hostile-named tests); complaint themes folded into a 20-theme matrix; product-by-product new/missing lists; Genesis identity card, concurrency, migration and price-point subsections; target-number provenance (Appendix A.4); knowledge pack learnings and iteration records extended |
