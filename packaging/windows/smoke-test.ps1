@@ -53,23 +53,23 @@ function Step([string] $Name, [string] $Exe, [string[]] $Arguments) {
   $log = Join-Path $Out "$Name.log"
   $text = & $Exe @Arguments 2>&1 | Out-String
   Set-Content -Path $log -Value $text
-  if ($LASTEXITCODE -eq 0) { $script:Pass++; Write-Output "PASS  $Name" }
-  else { $script:Fail++; Write-Output "FAIL  $Name  (exit $LASTEXITCODE, see $log)" }
+  if ($LASTEXITCODE -eq 0) { $script:Pass++; Write-Host "PASS  $Name" }
+  else { $script:Fail++; Write-Host "FAIL  $Name  (exit $LASTEXITCODE, see $log)" }
   return $text
 }
 function Check([string] $Name, [bool] $Condition, [string] $Why = "") {
-  if ($Condition) { $script:Pass++; Write-Output "PASS  $Name" }
-  else { $script:Fail++; Write-Output "FAIL  $Name  $Why" }
+  if ($Condition) { $script:Pass++; Write-Host "PASS  $Name" }
+  else { $script:Fail++; Write-Host "FAIL  $Name  $Why" }
 }
 
-Write-Output "CADCraft smoke test · $((Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')) · out: $Out"
+Write-Host "CADCraft smoke test · $((Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')) · out: $Out"
 
 # 0. binaries
 if (-not (Test-Path $Cli) -or -not (Test-Path $App)) {
-  if ($NoBuild) { Write-Output "binaries missing: $Cli / $App"; exit 1 }
-  Write-Output "building release binaries (first time: several minutes)"
+  if ($NoBuild) { Write-Host "binaries missing: $Cli / $App"; exit 1 }
+  Write-Host "building release binaries (first time: several minutes)"
   Push-Location $Root
-  try { cargo build --release -p cadcraft-cli -p cadcraft; if ($LASTEXITCODE -ne 0) { Write-Output "build failed"; exit 1 } }
+  try { cargo build --release -p cadcraft-cli -p cadcraft; if ($LASTEXITCODE -ne 0) { Write-Host "build failed"; exit 1 } }
   finally { Pop-Location }
 }
 
@@ -130,7 +130,7 @@ if (-not $NoGui) {
     try { $c = New-Object System.Net.Sockets.TcpClient; $c.Connect('127.0.0.1', $Port); $client = $c } catch { $client = $null }
   }
   if ($client) {
-    $script:Pass++; Write-Output "PASS  gui-control-port (after ${i}s)"
+    $script:Pass++; Write-Host "PASS  gui-control-port (after ${i}s)"
     $stream = $client.GetStream()
     $writer = New-Object System.IO.StreamWriter($stream); $writer.AutoFlush = $true
     $reader = New-Object System.IO.StreamReader($stream)
@@ -156,18 +156,18 @@ if (-not $NoGui) {
     Send ('{"id":7,"method":"ui.render","params":{"path":"' + $renderJson + '","width":800,"height":500}}') | Out-Null
     Start-Sleep -Seconds 2
     Check 'gui-render-png' ((Test-Path $render) -and ((Get-Item $render).Length -gt 0))
-    if ((Test-Path $shot) -and ((Get-Item $shot).Length -gt 0)) { $script:Pass++; Write-Output "PASS  gui-screenshot ($((Get-Item $shot).Length) bytes)" }
-    else { Write-Output "WARN  gui-screenshot (no presented frame yet; ui.render passed instead): $r6" }
+    if ((Test-Path $shot) -and ((Get-Item $shot).Length -gt 0)) { $script:Pass++; Write-Host "PASS  gui-screenshot ($((Get-Item $shot).Length) bytes)" }
+    else { Write-Host "WARN  gui-screenshot (no presented frame yet; ui.render passed instead): $r6" }
     Send '{"id":8,"method":"app.quit","params":{}}' | Out-Null
     Set-Content -Path (Join-Path $Out 'control.log') -Value ($replies -join "`n")
     Start-Sleep -Seconds 2
     $client.Close()
   } else {
-    $script:Fail++; Write-Output "FAIL  gui-control-port (see $guiLog)"
+    $script:Fail++; Write-Host "FAIL  gui-control-port (see $guiLog)"
   }
   if (-not $proc.HasExited) { Stop-Process -Id $proc.Id -Force -ErrorAction SilentlyContinue }
 }
 
-Write-Output '----'
-Write-Output "passed $script:Pass, failed $script:Fail · logs in $Out"
+Write-Host '----'
+Write-Host "passed $script:Pass, failed $script:Fail · logs in $Out"
 exit $script:Fail
