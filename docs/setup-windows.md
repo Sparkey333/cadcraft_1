@@ -1,6 +1,6 @@
 # Setting up CADCraft on a Windows PC
 
-> **Last reviewed:** 2026-10-21 · **Last updated:** 2026-10-21 · **Change:** major (first version) · **Target:** CADCraft 0.10.0 on Windows 10/11, x64 and arm64
+> **Last reviewed:** 2026-11-06 · **Last updated:** 2026-11-06 · **Change:** minor (smoke test added; first version 2026-10-21) · **Target:** CADCraft 0.10.0 on Windows 10/11, x64 and arm64
 
 Three ways to get a running CADCraft on Windows, from quickest to most flexible. The first two
 need no developer tools at all.
@@ -142,6 +142,28 @@ Claude Desktop configuration (`%APPDATA%\Claude\claude_desktop_config.json`):
 
 Details: [mcp.md](mcp.md), [control-protocol.md](control-protocol.md), [customization.md](customization.md).
 
+## Functional smoke test
+
+`packaging\windows\smoke-test.ps1` checks a build end to end in about a minute: CLI version and
+command catalogue, the sample floor plan, `info`, the DXF → DWG → SVG → PNG → PDF chain, a scripted
+drawing (LINE, CIRCLE, DIMLINEAR) saved and exported with entity checks, the JSON command form, a
+DWG round trip, a 20,000-entity benchmark, and finally the desktop app started with the control
+channel: it draws a circle and a polyline through JSON, inspects the drawing, writes a screenshot
+and a headless render, and quits. Every step prints `PASS` or `FAIL`; the exit code is the number
+of failures and the logs are in `target\smoke\`.
+
+```powershell
+powershell -ExecutionPolicy Bypass -File packaging\windows\smoke-test.ps1
+# CLI only, no window:
+powershell -ExecutionPolicy Bypass -File packaging\windows\smoke-test.ps1 -NoGui
+# installed binaries instead of a source build:
+powershell -ExecutionPolicy Bypass -File packaging\windows\smoke-test.ps1 -Cli "C:\Program Files\CADCraft\cadcraft-cli.exe" -App "C:\Program Files\CADCraft\cadcraft.exe"
+```
+
+The same test for Linux and macOS is `packaging/smoke-test.sh` (34 steps; passed in the Linux
+container on 2026-11-06). On a Linux machine without a display it starts its own Xvfb and uses the
+software Vulkan driver.
+
 ## If something goes wrong
 
 | Symptom | What to do |
@@ -163,8 +185,14 @@ container with Rust 1.97), then `run --sample`, `--save`, `--export`, `info`, `c
 the MSVC workload, the MSI) follow `packaging/windows/package.ps1` and the release workflow, which
 build the published Windows installers.
 
+On 2026-11-06 the functional smoke test (`packaging/smoke-test.sh`, the shell twin of the PowerShell
+script above) passed 34 of 34 steps in the same container: the whole CLI chain, and the desktop app
+under a virtual display answering the control channel, drawing a circle and a polyline from JSON
+and writing a 1600×1000 screenshot. The PowerShell script has not yet run on a Windows machine.
+
 ## Revision history
 
 | Date | Change | Summary |
 |---|---|---|
 | 2026-10-21 | major | First version: release, portable and build-from-source routes, the setup script, first commands, agents, troubleshooting |
+| 2026-11-06 | minor | Functional smoke test section (`smoke-test.ps1`, `smoke-test.sh`); verified note for the container run |
