@@ -160,7 +160,7 @@ powershell -ExecutionPolicy Bypass -File packaging\windows\smoke-test.ps1 -NoGui
 powershell -ExecutionPolicy Bypass -File packaging\windows\smoke-test.ps1 -Cli "C:\Program Files\CADCraft\cadcraft-cli.exe" -App "C:\Program Files\CADCraft\cadcraft.exe"
 ```
 
-The same test for Linux and macOS is `packaging/smoke-test.sh` (34 steps; passed in the Linux
+The same test for Linux and macOS is `packaging/smoke-test.sh` (35 steps; passed in the Linux
 container on 2026-11-06). On a Linux machine without a display it starts its own Xvfb and uses the
 software Vulkan driver.
 
@@ -186,7 +186,7 @@ the MSVC workload, the MSI) follow `packaging/windows/package.ps1` and the relea
 build the published Windows installers.
 
 On 2026-11-06 the functional smoke test (`packaging/smoke-test.sh`, the shell twin of the PowerShell
-script above) passed 34 of 34 steps in the same container: the whole CLI chain, and the desktop app
+script above) passed 35 of 35 steps in the same container: the whole CLI chain, and the desktop app
 under a virtual display answering the control channel, drawing a circle and a polyline from JSON
 and writing a 1600×1000 screenshot. The PowerShell script has not yet run on a Windows machine.
 
