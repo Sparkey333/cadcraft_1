@@ -145,11 +145,12 @@ Details: [mcp.md](mcp.md), [control-protocol.md](control-protocol.md), [customiz
 ## Functional smoke test
 
 `packaging\windows\smoke-test.ps1` checks a build end to end in about a minute: CLI version and
-command catalogue, the sample floor plan, `info`, the DXF → DWG → SVG → PNG → PDF chain, a scripted
-drawing (LINE, CIRCLE, DIMLINEAR) saved and exported with entity checks, the JSON command form, a
-DWG round trip, a 20,000-entity benchmark, and finally the desktop app started with the control
-channel: it draws a circle and a polyline through JSON, inspects the drawing, writes a screenshot
-and a headless render, and quits. Every step prints `PASS` or `FAIL`; the exit code is the number
+command catalogue (431 commands), the sample floor plan, `info` (16 entities), the DXF → DWG → SVG → PNG → PDF
+chain with entity counts and file signatures, a scripted drawing (LINE, CIRCLE, DIMLINEAR) whose
+model-space counts are checked through `info`, the JSON command form, a DWG round trip that must
+keep all three entities, a 20,000-entity benchmark, and finally the desktop app started with the
+control channel: it takes a baseline entity count, draws a circle and two lines through JSON, checks
+the count rose by three, writes a screenshot and a headless render, quits, and must exit cleanly. Every step prints `PASS` or `FAIL`; the exit code is the number
 of failures and the logs are in `target\smoke\`.
 
 ```powershell
@@ -160,7 +161,7 @@ powershell -ExecutionPolicy Bypass -File packaging\windows\smoke-test.ps1 -NoGui
 powershell -ExecutionPolicy Bypass -File packaging\windows\smoke-test.ps1 -Cli "C:\Program Files\CADCraft\cadcraft-cli.exe" -App "C:\Program Files\CADCraft\cadcraft.exe"
 ```
 
-The same test for Linux and macOS is `packaging/smoke-test.sh` (35 steps; passed in the Linux
+The same test for Linux and macOS is `packaging/smoke-test.sh` (49 steps; passed in the Linux
 container on 2026-11-06). On a Linux machine without a display it starts its own Xvfb and uses the
 software Vulkan driver.
 
@@ -186,7 +187,7 @@ the MSVC workload, the MSI) follow `packaging/windows/package.ps1` and the relea
 build the published Windows installers.
 
 On 2026-11-06 the functional smoke test (`packaging/smoke-test.sh`, the shell twin of the PowerShell
-script above) passed 35 of 35 steps in the same container: the whole CLI chain, and the desktop app
+script above) passed 49 of 49 steps in the same container: the whole CLI chain, and the desktop app
 under a virtual display answering the control channel, drawing a circle and a polyline from JSON
 and writing a 1600×1000 screenshot. The PowerShell script has not yet run on a Windows machine.
 
