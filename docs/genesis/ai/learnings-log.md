@@ -130,3 +130,46 @@
 - From this iteration every delegated run is pinned to the Opus 5.5 alias, so the work continues
   when the session model reaches its limit; the session model itself is switched by the owner. Every
   record names the model that produced it.
+
+## 2026-11-06 · Fourth iteration: build, check and test for real
+
+### Functional smoke tests (new: `packaging/smoke-test.sh`, `packaging/windows/smoke-test.ps1`)
+- 49 steps, all passing in the Linux container on the 0.10.0 release binaries: CLI version and
+  catalogue (431 command objects), sample floor plan with 16 entities as DXF and as DWG, DXF → DWG →
+  SVG → PNG → PDF with element counts and file signatures, a scripted drawing (LINE, CIRCLE,
+  DIMLINEAR) whose model-space counts come from `info`, the JSON command form, a DWG round trip that
+  keeps all three entities, `perf 20000`, and the desktop app under a private Xvfb: baseline
+  `drawing.inspect`, `ping`, `cmdline.input` and `engine.execute` that must raise the entity count by
+  exactly three, `ui.screenshot` (1600×1000, 250 KB) and `ui.render`, `app.quit` acknowledged, a
+  clean exit and no panic in the log.
+- The first version of the scripts (35 steps) was reviewed by three Opus lenses (PowerShell runtime,
+  POSIX portability, correctness against the CLI and control channel): 50 findings, 50 verified, 46
+  real. The pattern behind most of them: an assertion that cannot fail. `^LINE` matched the
+  dimension's anonymous block, `entit` matched the key `entityCount` even at zero, a line count of
+  pretty-printed JSON stood in for a command count, `cmdline.input` always replies ok:true with the
+  error inside the result, and a TCP connect proved only that something listens on the port. Every
+  assertion now reads a number the product computed and compares it with the expected value.
+- On Windows, PowerShell 5.1 and 7.0–7.2 pass native arguments without escaping embedded quotes,
+  so JSON given to `--cmd` arrives without its quotes; the script escapes them when legacy passing
+  is in effect. The POSIX script starts Xvfb on a free display with `-displayfd` and probes
+  readiness with a `ping` over the channel instead of `nc -z`, which some `nc` variants lack.
+- Two lessons from writing it: `xvfb-run -s` takes one quoted argument, which a POSIX variable
+  cannot carry, so the script starts its own Xvfb instead; and the control channel answers one JSON
+  object per request on the same connection, so a single `nc` session with a sleep before
+  `app.quit` is enough, no client library needed, as long as a watchdog guards against a hung app.
+- The PowerShell twin mirrors every step with .NET's TcpClient for the control channel; it has
+  not run on Windows yet (no PowerShell in the container, no PC folder shared with the session).
+
+### Repository gate (`cargo xtask ci`)
+- First run (`cargo xtask ci`, 2026-11-06 22:44 UTC): `fmt --check` passed, `clippy --workspace --all-targets -D warnings` passed (2 min 35 s), then the workspace test build stopped with "No space left on device": the dev profile is optimized with debug info and the test binaries of the ui crate alone pushed `target/debug` to 25 GB, past the container's writable allowance. Not a code failure.
+- Second run with lean settings (`CARGO_INCREMENTAL=0 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0`, 2026-11-06 22:55–23:08 UTC): `cargo test --workspace` passed, 2204 tests passed, 0 failed, 0 ignored across 327 test binaries (`target/debug` 7.3 GB with debug info off); `cargo xtask assets` passed (28 asset files attributed); `cargo xtask layers` passed (ok: 16 crates, no layering violations.); `cargo xtask wasm` passed (11 crates checked for wasm32-unknown-unknown). With fmt and clippy from the first run, every step of the gate is green on this branch at commit b013ca8.
+- Lesson: in a container with a 20–25 GB allowance, run the gate with debug info off and remove `target/debug` before the wasm check; keep `target/release` for the smoke test. The tests alone need about 12 minutes on 4 vCPU.
+
+### Running on the owner's PC
+- A cloud session can build and test on the owner's own machine only through a Remote Control
+  folder; none was shared (the folder list was empty), so the PC run stays blocked until the
+  clone's folder is added in the Claude desktop app (Settings → Claude Code → Remote Control).
+
+### Model continuity
+- The session was still served by the Fable 5.1 model on 2026-11-06 (session record); delegated
+  runs stay pinned to Opus 5.5.
