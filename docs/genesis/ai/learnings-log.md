@@ -170,6 +170,19 @@
   folder; none was shared (the folder list was empty), so the PC run stays blocked until the
   clone's folder is added in the Claude desktop app (Settings → Claude Code → Remote Control).
 
+### Browser build as an artifact (2026-11-07)
+- `trunk build --release` in `apps/cadcraft-web` produces a 23 MB WebAssembly file with the
+  workspace's release profile (opt-level 3, thin LTO, 16 codegen units); a claude.ai artifact
+  allows 20 MiB per file. Environment overrides at build time, with no change to the repository
+  (`CARGO_PROFILE_RELEASE_OPT_LEVEL=z`, `LTO=fat`, `CODEGEN_UNITS=1`), bring it to 13.3 MiB; never
+  set `panic=abort`, which would defeat the never-crash guards. `wasm-opt --strip-debug` alone
+  saved only 24 KB: the size is code, not metadata.
+- Headless Chromium with SwiftShader loads the page in about one second on the WebGL2 fallback
+  and draws the full interface, so the web build does not need WebGPU.
+- Inside the artifact sandbox, browser downloads are refused, so Save and Export cannot deliver
+  files; drawing, commands and dropped files work. A small inline reporter in the published
+  `index.html` shows load errors in the page, because viewers have no console.
+
 ### Model continuity
 - The session was still served by the Fable 5.1 model on 2026-11-06 (session record); delegated
   runs stay pinned to Opus 5.5.
