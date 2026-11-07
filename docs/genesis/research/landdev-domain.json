@@ -1,0 +1,545 @@
+{
+ "summary": "A simplified but complete land-development CAD must carry a project from feasibility (parcel, zoning, flood, wetlands, soils, slopes) through survey import, site planning with live zoning and ADA checks, grading with cut/fill balance, hydrology and stormwater sizing, utilities, road and parking geometry, landscape, recordable plats and construction-document sheet sets, to stake-out and as-builts. Today each stage uses two to four tools (Civil 3D with Hydraflow/SSA, Carlson, Trimble Business Center, HydroCAD, Bluebeam, GIS, spreadsheets) joined by DXF/LandXML/CSV/PDF hand-offs where CRS, attributes and references get lost. Must-haves: CRS-aware drawing, COGO points and traverse/mapcheck, parcels with legal descriptions, TIN surfaces with contours and volumes, feature-line grading, Rational/SCS hydrology with Atlas 14 rainfall, pipe networks with crossing checks, alignments and profiles, a parametric zoning rule engine, sheet sets with revision clouds, LandXML/DXF/GeoTIFF/GeoJSON exchange, a project container with link health and provenance, and a never-crash policy. Each old-school and neo technique listed below reduces to a few object types, calculations, data feeds and reports. Nearly all needed US data are public domain or permissive with verified endpoints; OSM (ODbL), NSRDB (CC BY 3.0 US), EPSG (acknowledgement) and ICC code text (copyright) need care. Caveat: the search budget ran out early and official hosts were egress-blocked, so verification came from GitHub code search, AWS open-data registry licence lines and the Autodesk Help API; unverified items are marked.",
+ "workflow_stages": [
+  {
+   "stage": "Feasibility and due diligence",
+   "deliverables": "Constraint map (parcel, zoning, FEMA zone, wetlands, soils/HSG, slopes, utilities, easements); yield study or test fit; pro-forma inputs; Phase I ESA scoping",
+   "tools_today": "County GIS/ArcGIS Online, QGIS, Regrid, TestFit, Deepblocks, Autodesk Forma, FEMA MSC, NRCS Web Soil Survey, USFWS Wetlands Mapper, spreadsheets (GIS-centric, not CAD)"
+  },
+  {
+   "stage": "Boundary and topographic survey import",
+   "deliverables": "ALTA/NSPS or boundary survey; topo with contours and spot shots; located utilities and trees; control points with datum/CRS; field-to-finish linework",
+   "tools_today": "Trimble Business Center, Carlson Survey, Leica Infinity, STAR*NET, Civil 3D survey database (field book, LandXML, point files; description keys, linework code sets) help.autodesk.com/view/CIV3D/2026/ENU/?guid=GUID-97D363BA-BAC2-4BAE-A2AA-C6C96C1CE8EF"
+  },
+  {
+   "stage": "Site planning and zoning checks",
+   "deliverables": "Site plan; setback and buffer lines; coverage and impervious tally; parking count incl. accessible/van spaces; FAR/height; fire access; preliminary plat",
+   "tools_today": "AutoCAD/Civil 3D parcels, BricsCAD, SketchUp, Vectorworks Landmark, TestFit; zoning and ADA counts checked by hand with offsets, area labels and spreadsheets"
+  },
+  {
+   "stage": "Grading and earthwork",
+   "deliverables": "Grading plan (spot grades, proposed contours), proposed surface, cut/fill and balance, retaining wall TW/BW and profile, ADA route slopes, pad and parking grading",
+   "tools_today": "Civil 3D feature lines, grading groups, Grading Volume Tools (auto-balance to 0.1%), TIN volume surfaces, Grading Optimization; Carlson Civil, BricsCAD Pro, Kubla Cubed, Agtek. help.autodesk.com/view/CIV3D/2026/ENU/?guid=GUID-27249BE4-A308-41E3-8E7A-D30673E26D9D"
+  },
+  {
+   "stage": "Drainage and stormwater",
+   "deliverables": "Drainage areas with Tc; pre/post Rational and SCS-CN hydrology; storm sewer HGL; detention stage-storage-discharge; LID/BMP sizing; SWPPP and E&SC plan; drainage report",
+   "tools_today": "Civil 3D Hydraflow Storm Sewers/Hydrographs/Express and Storm and Sanitary Analysis (discontinued by Autodesk: last build 2024.1.1 installs only against 2024/2025; 2026+ use the cloud Drainage Analysis tools) (help.autodesk.com/view/CIV3D/2026/ENU/?guid=GUID-F11FAAD6-F3D3-4FC7-8315-BF8329E5E35B); HydroCAD, Bentley OpenFlows, EPA SWMM 5.2, PCSWMM, InfoDrainage, HEC-HMS/RAS, WinTR-55, EPA National Stormwater Calculator"
+  },
+  {
+   "stage": "Utilities (water, sanitary, storm, dry)",
+   "deliverables": "Water, sanitary and storm plans/profiles with inverts and slopes; dry-utility corridors; crossing/conflict table; easement exhibits",
+   "tools_today": "Civil 3D pipe networks with parts lists and 3D interference check, path-based pressure networks since 2021 (help.autodesk.com/view/CIV3D/2026/ENU/?guid=GUID-E1D20687-9A55-463E-BD14-4178AB9BD7D7); Bentley WaterCAD/SewerCAD; Carlson; utility companies for dry utilities"
+  },
+  {
+   "stage": "Roads, driveways and parking",
+   "deliverables": "Alignments and profiles, typical sections, intersection grading, curb returns, sight distance, turning templates, pavement sections, parking geometry",
+   "tools_today": "Civil 3D alignments/profiles/corridors, Autodesk Vehicle Tracking, Transoft AutoTURN, Carlson, BricsCAD; AASHTO Green Book geometry"
+  },
+  {
+   "stage": "Landscape",
+   "deliverables": "Planting plan and schedule, irrigation plan and hydrozones, tree survey and preservation, landscape-area and buffer calcs",
+   "tools_today": "Land F/X, Vectorworks Landmark, SketchUp, Rhino, AutoCAD block libraries (vendor URLs unverified)"
+  },
+  {
+   "stage": "Permitting and plan sets",
+   "deliverables": "Recordable plat; construction documents (cover and index, notes, existing/demo, site, grading, drainage, utilities, E&SC, landscape, details); revision clouds and deltas; PDF submittals",
+   "tools_today": "Civil 3D plan production (view frames, match lines, Create Sheets, Sheet Set Manager; help.autodesk.com/view/CIV3D/2026/ENU/?guid=GUID-E23210B2-8097-407C-A461-ED33DB5857B8), AutoCAD, Bluebeam Revu, e-permit portals (Accela, EnerGov, ProjectDox)"
+  },
+  {
+   "stage": "Construction staking and as-builts",
+   "deliverables": "Stake-out point lists (CSV), machine-control surfaces (LandXML), cut sheets, record drawings with surveyed rims/inverts, as-built surface and quantities",
+   "tools_today": "Trimble Access/Siteworks/Earthworks, Topcon MAGNET, Leica Captivate, Carlson SurvPC, Civil 3D point and LandXML export (vendor URLs unverified)"
+  }
+ ],
+ "requirements": [
+  {
+   "area": "Geodesy",
+   "feature": "Drawing CRS (EPSG), grid-to-ground scale factor, vertical datum tag, reprojection of imports, bearing/azimuth/DMS input, US survey vs international foot",
+   "priority": "must",
+   "why": "Every survey and data feed is in a different CRS; this is where off-by-a-foot errors come from",
+   "data_source": "EPSG dataset via PROJ proj.db; https://epsg.org/terms-of-use.html"
+  },
+  {
+   "area": "Points/COGO",
+   "feature": "COGO point object (number, N, E, Z, description), point groups, description keys, CSV/PNEZD/LandXML import-export",
+   "priority": "must",
+   "why": "Survey data enter and leave as points"
+  },
+  {
+   "area": "Points/COGO",
+   "feature": "Bearing-distance, inverse, intersections, traverse with closure and compass-rule adjustment, mapcheck report",
+   "priority": "must",
+   "why": "Boundary work and plat checking; reference behaviour is Civil 3D Map Check Report",
+   "data_source": "https://help.autodesk.com/view/CIV3D/2026/ENU/?guid=GUID-3D99202F-BDD3-4585-89E1-02DE47ECFD3A"
+  },
+  {
+   "area": "Parcels",
+   "feature": "Parcel object with area, line/curve tables, lot numbering, ROW parcels, generated metes-and-bounds description with editable phrasing",
+   "priority": "must",
+   "why": "Plats and legal descriptions are deliverables on every subdivision",
+   "data_source": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/Where-to-change-legal-description-report-phrasings-in-Civil-3D.html"
+  },
+  {
+   "area": "Surfaces",
+   "feature": "TIN from points, breaklines, contours, GeoTIFF DEM, LandXML; boundaries/holes; contours with interval, index, smoothing, labels; spot elevations; slope/elevation banding",
+   "priority": "must",
+   "why": "Existing and proposed ground underlie grading, drainage and volumes"
+  },
+  {
+   "area": "Surfaces",
+   "feature": "Surface-to-surface volumes (TIN difference) plus grid and average-end-area for reconciliation, labelled by method",
+   "priority": "must",
+   "why": "Contractors and reviewers compare methods; results differ (Autodesk support note)"
+  },
+  {
+   "area": "Surfaces",
+   "feature": "LAS/LAZ point-cloud import with ground-class filtering",
+   "priority": "should",
+   "why": "3DEP and drone lidar are the cheapest topo for feasibility",
+   "data_source": "USGS 3DEP LPC (LAZ 1.4)"
+  },
+  {
+   "area": "Grading",
+   "feature": "Feature lines with elevations/grades, slope-to-surface daylight, pad and parking grading, retaining wall TW/BW, live cut/fill balance",
+   "priority": "must",
+   "why": "Core of site design; model is Civil 3D grading groups"
+  },
+  {
+   "area": "Grading",
+   "feature": "ADA route checker (running <= 5%, cross <= 2%, ramps <= 1:12 with landings) and accessible parking count from Table 208.2",
+   "priority": "must",
+   "why": "Plan reviewers reject sets on these; today checked by hand",
+   "data_source": "https://www.ada.gov/law-and-regs/design-standards/2010-stds/"
+  },
+  {
+   "area": "Drainage",
+   "feature": "Drainage areas with Tc, Rational and SCS-CN runoff (CN from SSURGO HSG), Manning pipe sizing, HGL/EGL on profiles, inlet spread, pond stage-storage-discharge with simple routing",
+   "priority": "must",
+   "why": "Minimum to produce a drainage report",
+   "data_source": "SSURGO muaggatt.hydgrpdcd via https://sdmdataaccess.sc.egov.usda.gov/tabular/post.rest"
+  },
+  {
+   "area": "Drainage",
+   "feature": "NOAA Atlas 14 point fetch stored in the project with provenance",
+   "priority": "must",
+   "why": "Design storms for every hydrology calc; must not be re-fetched silently",
+   "data_source": "https://hdsc.nws.noaa.gov/cgi-bin/hdsc/new/cgi_readH5.py?lat=&lon=&type=pf&data=depth&units=english&series=pds"
+  },
+  {
+   "area": "Drainage",
+   "feature": "LID/BMP objects sized to WQv; SWPPP disturbed-area and phasing tally; E&SC symbol library",
+   "priority": "should",
+   "why": "NPDES construction permits above 1 acre (unverified threshold) and MS4 reviews require them"
+  },
+  {
+   "area": "Utilities",
+   "feature": "Gravity pipe networks (structures, pipes, inverts, slopes, cover, rims), plan/profile labels, crossing and clearance report",
+   "priority": "must",
+   "why": "Sanitary and storm plans and profiles are mandatory sheets"
+  },
+  {
+   "area": "Roads",
+   "feature": "Horizontal alignments (tangent, circular curve), stationing, profiles with vertical curves, cross sections",
+   "priority": "must",
+   "why": "Driveways, streets, utility stationing"
+  },
+  {
+   "area": "Site rules",
+   "feature": "Parametric zoning rule set (setbacks by yard, impervious %, coverage, height, parking ratios, buffers, well/septic/stream setbacks) with live compliance report",
+   "priority": "must",
+   "why": "Genesis differentiator; done in spreadsheets today and a top source of resubmittals"
+  },
+  {
+   "area": "Sheets",
+   "feature": "Layouts/viewports, sheet index, title-block fields, revision clouds with deltas, north arrow and scale bar objects, match lines, batch PDF with bookmarks",
+   "priority": "must",
+   "why": "Construction documents are the product"
+  },
+  {
+   "area": "Sheets",
+   "feature": "Plat template (certificates, monument legend, line/curve tables) at recording sizes",
+   "priority": "should",
+   "why": "Recordable plats have county-specific formats"
+  },
+  {
+   "area": "Exchange",
+   "feature": "DXF/DWG, LandXML 1.2 (surfaces, alignments, profiles, parcels, CgPoints, pipes), GeoJSON/GeoPackage/shapefile, GeoTIFF, CSV, PDF out",
+   "priority": "must",
+   "why": "Every hand-off in the workflow table uses one of these"
+  },
+  {
+   "area": "Referencing",
+   "feature": "Project container bundling drawing, references and data snapshots with relative paths, link-health check and per-layer provenance (URL, date, licence, attribution)",
+   "priority": "must",
+   "why": "Stated Genesis goal; ODbL/CC-BY attribution is also a legal need"
+  },
+  {
+   "area": "Referencing",
+   "feature": "Live connectors with caching to NFHL, NWI, SSURGO, 3DEP, Atlas 14, parcels, OSM",
+   "priority": "should",
+   "why": "Feasibility maps in minutes instead of a GIS detour"
+  },
+  {
+   "area": "Stability",
+   "feature": "Never-crash policy, autosave/journaling, recovery, hostile-input tests for every parser",
+   "priority": "must",
+   "why": "Zero-crash goal; parsers of external data are the main risk"
+  },
+  {
+   "area": "Neo",
+   "feature": "Sun-path/shadow study, PV layout and PVWatts v8 call; rainwater catchment and cistern sizing; septic sizing; defensible-space rings; BFE/freeboard check",
+   "priority": "should",
+   "why": "Cheap to add on top of surfaces and rules; strong differentiator for owner-builders and permaculture designers"
+  },
+  {
+   "area": "Roads",
+   "feature": "Spirals, superelevation, corridors/assemblies, least-squares survey adjustment, dynamic routing via EPA SWMM, 3D visualisation",
+   "priority": "later",
+   "why": "Highway- and survey-firm-grade features; not needed for a first permit set"
+  }
+ ],
+ "old_school": [
+  {
+   "technique": "COGO by bearing and distance",
+   "what_cad_needs": "Bearing/azimuth/DMS parser and formatter; create point/line by bearing-distance; inverse; bearing-bearing and distance-distance intersections; traverse with closure and compass-rule adjustment; mapcheck report",
+   "source": "https://help.autodesk.com/view/CIV3D/2026/ENU/?guid=GUID-3D99202F-BDD3-4585-89E1-02DE47ECFD3A"
+  },
+  {
+   "technique": "Metes-and-bounds legal descriptions",
+   "what_cad_needs": "Parcel to description generator (POB, calls, curve radius/arc/chord/delta) with editable phrasing, and a deed-text parser that draws the boundary",
+   "source": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/Where-to-change-legal-description-report-phrasings-in-Civil-3D.html ; ALTA/NSPS 2021 (unverified)"
+  },
+  {
+   "technique": "Subdivision plats",
+   "what_cad_needs": "Plat templates at recording sizes, lot/block numbering, line and curve tables, found/set monument symbols, easement hatches, certificate and dedication text blocks, vicinity map viewport",
+   "source": "County recording requirements vary (unverified)"
+  },
+  {
+   "technique": "Contour interpolation from spot elevations",
+   "what_cad_needs": "TIN with linear interpolation along edges, contour tracing at any interval with index contours and non-crossing smoothing, and an interpolate-between-two-spot-grades command",
+   "source": "https://help.autodesk.com/view/CIV3D/2026/ENU/?guid=GUID-34F74D97-A43A-4710-940B-6A9FE8A78E3E"
+  },
+  {
+   "technique": "Hand-drafting conventions and lettering",
+   "what_cad_needs": "Own stroke drafting font, lineweight-by-layer matching pen weights, standard civil linetypes (property, easement, centerline, fence, contours), north arrow, graphic scale, match lines, material hatches",
+   "source": "ASME Y14.2 https://www.asme.org/codes-standards/find-codes-standards/y14-2-line-conventions-lettering (unverified)"
+  },
+  {
+   "technique": "Cisterns and rain catchment",
+   "what_cad_needs": "Catchment object (roof polygon, pitch, efficiency), downspout routing, cistern object (volume, overflow, first flush), calc gallons = ft2 x inches x 0.623 x efficiency, monthly mass balance vs demand",
+   "source": "0.623 constant e.g. github.com/PDFCraftTool/OmniTools; TWDB Rainwater Harvesting Manual https://www.twdb.texas.gov/publications/brochures/conservation/doc/RainwaterHarvestingManual_3rdedition.pdf (unverified)"
+  },
+  {
+   "technique": "Root cellars",
+   "what_cad_needs": "Below-grade structure object with earth-cover depth, frost-depth check, vent stacks, drain-to-daylight, auto section view",
+   "source": "Vernacular references only (unverified)"
+  },
+  {
+   "technique": "Passive solar siting and orientation",
+   "what_cad_needs": "Sun-path diagram and solar altitude/azimuth for date and place (implement Reda-Andreas SPA from the NREL report, not NREL's C code), long-axis orientation check, overhang depth from sun angles, shadow casting from terrain/trees/neighbours",
+   "source": "NREL/TP-560-34302 as transcribed in pvlib spa.py (github.com/pvlib/pvlib-python); https://www.energy.gov/energysaver/passive-solar-home-design (unverified)"
+  },
+  {
+   "technique": "Swales, terraces and keyline",
+   "what_cad_needs": "Trace-contour-at-elevation, near-contour polylines draped on surface with a set fall (keyline ~1:400), terrace spacing from slope, swale cross-section cut/fill, spillway points",
+   "source": "NRCS CPS 600/412/362 (CPS numbering confirmed via github.com/HiCSC/ClimateSmartPracticeStandards); Yeomans keyline (unverified)"
+  },
+  {
+   "technique": "Dry-stone walls",
+   "what_cad_needs": "Wall object with batter (~1:6), base width about half to two-thirds of height, height limit, through-stone courses, tonnage estimate",
+   "source": "Dry Stone Walling Association https://www.dswa.org.uk/ (unverified)"
+  },
+  {
+   "technique": "Earth building: adobe, rammed earth, cob",
+   "what_cad_needs": "Thick-wall object (cob 12-24 in), stem-wall height above grade, roof-overhang rule, one-storey prescriptive limit flag per IRC Appendix AU, formwork lift heights for rammed earth",
+   "source": "2021 IRC Appendix AU via github.com/thexqin/us-building-codes-dataset; NM 14.7.4 NMAC, ASTM E2392 (unverified)"
+  },
+  {
+   "technique": "Timber framing",
+   "what_cad_needs": "Bent/bay grid, post/beam/brace library, pier and footing layout on the site plan, crane and laydown areas",
+   "source": "Timber Framers Guild https://www.tfguild.org/ (unverified)"
+  },
+  {
+   "technique": "Straw bale and light straw-clay",
+   "what_cad_needs": "Modular thick wall (18-24 in) with bale course counts, toe-up height, roof overhang, one-storey prescriptive flag per IRC Appendix AS; infill-only flag per Appendix AR",
+   "source": "2021 IRC Appendices AS and AR via github.com/thexqin/us-building-codes-dataset"
+  },
+  {
+   "technique": "Windbreaks and shelterbelts",
+   "what_cad_needs": "Linear planting object with species rows, spacing, mature height H, orientation to prevailing wind, protected-area polygon (~10 H downwind), NOAA wind rose input",
+   "source": "NRCS CPS 380 Windbreak/Shelterbelt Establishment and Renovation, via github.com/HiCSC/ClimateSmartPracticeStandards"
+  },
+  {
+   "technique": "Septic systems and leach fields",
+   "what_cad_needs": "Tank and drainfield trench objects, area from percolation rate and bedrooms (state tables), setbacks to wells/lines/water/foundations, reserve area, plan and profile",
+   "source": "EPA Onsite Wastewater Treatment Systems Manual EPA/625/R-00/008 (unverified)"
+  },
+  {
+   "technique": "Wells",
+   "what_cad_needs": "Well point with setback rings and well-log attributes; link to USGS NWIS groundwater levels and state well-log databases",
+   "source": "NWIS endpoint https://waterservices.usgs.gov/nwis"
+  },
+  {
+   "technique": "Magnetic bearings in old deeds",
+   "what_cad_needs": "Declination for date and place to rotate magnetic calls to true or grid north",
+   "source": "NOAA NCEI geomagnetic calculator https://www.ngdc.noaa.gov/geomag/calculators/magcalc.shtml (unverified)"
+  },
+  {
+   "technique": "PLSS township/range/section descriptions",
+   "what_cad_needs": "Aliquot-part generator and BLM CadNSDI PLSS grid import",
+   "source": "https://gbp-blm-egis.hub.arcgis.com/ (unverified)"
+  }
+ ],
+ "neo": [
+  {
+   "technique": "Solar PV array layout with shading analysis",
+   "what_cad_needs": "Module/string/row objects (tilt, azimuth, GCR), hourly shadow casting from terrain and obstructions, inter-row shading, PVWatts v8 call (lat, lon, system_capacity, module_type, losses, array_type, tilt, azimuth, gcr, dc_ac_ratio, inv_eff, albedo, bifaciality, soiling) with API key",
+   "source": "github.com/NatLabRockies/developer.nlr.gov docs/solar/pvwatts/v8 (endpoint https://developer.nlr.gov/api/pvwatts/v8.json; old developer.nrel.gov host retired 2026-05-29 per search summary)"
+  },
+  {
+   "technique": "Rainwater harvesting sizing from Atlas 14 and roof areas",
+   "what_cad_needs": "Atlas 14 point fetch, monthly normals, roof catchment areas, first flush, demand profile, daily mass balance, tank size and overflow routing, report",
+   "source": "Endpoint via github.com/rogerlew/wepppy; NOAA FAQ on scripted access https://www.weather.gov/owp/hdsc_faqs (unverified)"
+  },
+  {
+   "technique": "Greywater",
+   "what_cad_needs": "Source fixtures, branched-drain/mulch-basin objects, surge tank, code flow estimates, setbacks",
+   "source": "Plumbing code appendices (unverified)"
+  },
+  {
+   "technique": "Bioswales, bioretention, permeable paving",
+   "what_cad_needs": "LID objects (area, ponding, media depth, underdrain, infiltration from soils), WQv sizing, drawdown time; optional SWMM LID module or National Stormwater Calculator run",
+   "source": "github.com/USEPA/Stormwater-Management-Model ; github.com/USEPA/National_Stormwater_Calculator_Desktop"
+  },
+  {
+   "technique": "Green roofs",
+   "what_cad_needs": "Roof object with media depth and retention, modified runoff coefficient, structural load note",
+   "source": "FLL guideline; Green Roofs for Healthy Cities (unverified)"
+  },
+  {
+   "technique": "Geothermal ground loops",
+   "what_cad_needs": "Bore-field grid or horizontal-trench object with spacing and depth, total loop length from load, conflict check against utilities/septic/trees",
+   "source": "IGSHPA design guidance (unverified)"
+  },
+  {
+   "technique": "EV charging, microgrids and battery storage",
+   "what_cad_needs": "EVSE stalls incl. accessible EV spaces, conduit runs, transformer/switchgear pads, battery enclosure clearances, EV-ready percentage rule, single-line export",
+   "source": "NFPA 855 and CALGreen EV-capable rules (unverified)"
+  },
+  {
+   "technique": "Agrivoltaics",
+   "what_cad_needs": "Elevated PV rows with crop strips, equipment row spacing, shading map for crop light",
+   "source": "NREL InSPIRE https://openei.org/wiki/InSPIRE (unverified)"
+  },
+  {
+   "technique": "ADUs, prefab and 3D-printed earth homes",
+   "what_cad_needs": "ADU rule set (size caps, reduced setbacks), prefab module library with transport-path check, print-envelope object for 3D-printed earth",
+   "source": "California HCD ADU handbook; WASP TECLA; ICON (unverified)"
+  },
+  {
+   "technique": "Net-zero and Passive House siting",
+   "what_cad_needs": "Solar-access envelope, orientation and glazing-by-orientation report, site data export (lat/lon, climate zone, elevation) to PHPP/WUFI",
+   "source": "PHIUS (unverified)"
+  },
+  {
+   "technique": "Wildfire defensible space",
+   "what_cad_needs": "Zone 0/1/2 rings (0-5, 5-30, 30-100 ft) from footprints, vegetation spacing rules on slopes, FHSZ layer fetch (HAZ_CLASS, HAZ_CODE)",
+   "source": "https://egis.fire.ca.gov/arcgis/rest/services/FRAP/FHSZ/MapServer ; CAL FIRE zones https://www.readyforwildfire.org/ (unverified)"
+  },
+  {
+   "technique": "Floodplain resilience",
+   "what_cad_needs": "NFHL zone/BFE attach, freeboard rule, finished-floor vs BFE check, fill and compensatory storage volumes, floodway flag, elevation-certificate export",
+   "source": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer layer 28; ASCE 24 (unverified)"
+  },
+  {
+   "technique": "Heat-island mitigation",
+   "what_cad_needs": "Canopy polygons at mature crown, shaded-parking percentage at a chosen date/time, cool pavement/roof SRI attributes, canopy-coverage report",
+   "source": "EPA heat island resources (unverified)"
+  },
+  {
+   "technique": "Smart irrigation",
+   "what_cad_needs": "Hydrozone polygons with plant factor and efficiency, ET-based water budget, weather-based controller object",
+   "source": "EPA WaterSense WBIC spec; California MWELO (unverified)"
+  },
+  {
+   "technique": "Composting toilets",
+   "what_cad_needs": "Fixture object with no drainfield, NSF/ANSI 41 attribute, reduces septic input",
+   "source": "NSF/ANSI 41 (unverified)"
+  },
+  {
+   "technique": "Constructed wetlands",
+   "what_cad_needs": "Cell objects sized by loading, berms and liner, hydraulic retention time",
+   "source": "EPA 2000 Constructed Wetlands Treatment of Municipal Wastewaters (unverified)"
+  },
+  {
+   "technique": "Hempcrete",
+   "what_cad_needs": "Non-structural infill wall assembly (~12 in) flagged to 2024 IRC Appendix BL limits (infill only, two storeys, low seismic, jurisdiction must adopt)",
+   "source": "https://codes.iccsafe.org/content/IRC2024P2/appendix-bl-hemp-lime-hempcrete-construction (via github.com/JinnZ2/BioGrid2.0)"
+  },
+  {
+   "technique": "Mass timber",
+   "what_cad_needs": "Structural grid, fire-separation distances for Type IV-A/B/C, crane/laydown and delivery path on the site plan",
+   "source": "IBC 2021 Type IV-A/B/C (unverified)"
+  }
+ ],
+ "open_data": [
+  {
+   "dataset": "USGS 3DEP DEMs and lidar point clouds",
+   "use": "Existing-ground surface, slopes, drainage delineation",
+   "url": "https://tnmaccess.nationalmap.gov/api/v1/products (datasets 'Digital Elevation Model (DEM) 1 meter', 'Lidar Point Cloud (LPC)'); s3://usgs-lidar-public",
+   "licence": "US Government Public Domain"
+  },
+  {
+   "dataset": "NRCS SSURGO via Soil Data Access",
+   "use": "Hydrologic soil group for CN, drainage class, water table, flooding, bedrock depth",
+   "url": "https://sdmdataaccess.sc.egov.usda.gov/tabular/post.rest (T-SQL; muaggatt.hydgrpdcd); https://websoilsurvey.sc.egov.usda.gov/",
+   "licence": "US Government public domain"
+  },
+  {
+   "dataset": "FEMA National Flood Hazard Layer",
+   "use": "Flood zone, SFHA, BFE, floodway",
+   "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer (layer 28: FLD_ZONE, SFHA_TF, ZONE_SUBTY); https://msc.fema.gov/portal",
+   "licence": "Public domain; preliminary data not for regulatory use"
+  },
+  {
+   "dataset": "NOAA Atlas 14 precipitation frequency",
+   "use": "Design storms, cistern sizing",
+   "url": "https://hdsc.nws.noaa.gov/cgi-bin/hdsc/new/cgi_readH5.py?lat=&lon=&type=pf&data=depth&units=english&series=pds ; grids https://hdsc.nws.noaa.gov/pfds/pfds_gis.html",
+   "licence": "Public domain; Atlas 15 CONUS in peer review 2026 (secondary sources)"
+  },
+  {
+   "dataset": "NREL NSRDB PSM4",
+   "use": "Hourly irradiance and TMY",
+   "url": "https://developer.nlr.gov/api/nsrdb/v2/solar/ ; s3://nrel-pds-nsrdb",
+   "licence": "CC BY 3.0 US (AWS registry); NREL terms require crediting DOE/NREL/Alliance"
+  },
+  {
+   "dataset": "NREL PVWatts v8",
+   "use": "PV output for a layout",
+   "url": "https://developer.nlr.gov/api/pvwatts/v8.json",
+   "licence": "Free with API key; attribution expected; rate limit unverified"
+  },
+  {
+   "dataset": "County and state parcel GIS",
+   "use": "Parcel boundaries and PINs for feasibility",
+   "url": "Example https://services.nconemap.gov/secure/rest/services/NC1Map_Parcels/FeatureServer/1 ; county ArcGIS REST services",
+   "licence": "Varies by jurisdiction; owner data often restricted"
+  },
+  {
+   "dataset": "OpenStreetMap",
+   "use": "Roads, buildings, land use, addresses",
+   "url": "https://overpass-api.de/api/interpreter ; https://www.openstreetmap.org/copyright",
+   "licence": "ODbL 1.0 (attribution, share-alike for derivative databases)"
+  },
+  {
+   "dataset": "Census TIGER/Line 2025",
+   "use": "Boundaries, roads, address ranges, hydrography",
+   "url": "https://www2.census.gov/geo/tiger/TIGER2025/",
+   "licence": "Public domain"
+  },
+  {
+   "dataset": "USFWS National Wetlands Inventory",
+   "use": "Wetland screening (non-regulatory)",
+   "url": "https://fwspublicservices.wim.usgs.gov/wetlandsmapservice/rest/services/Wetlands/MapServer",
+   "licence": "Public domain; USACE makes regulatory determinations"
+  },
+  {
+   "dataset": "EPA SWMM 5.2",
+   "use": "Dynamic hydrology/hydraulics and LID modelling",
+   "url": "github.com/USEPA/Stormwater-Management-Model ; https://www.epa.gov/water-research/storm-water-management-model-swmm ; github.com/USEPA/National_Stormwater_Calculator_Desktop",
+   "licence": "EPA states open source and free; licence file not confirmed this session"
+  },
+  {
+   "dataset": "EPA WATERS NHDPlus and USGS 3DHP",
+   "use": "Streams, catchments, HUC boundaries",
+   "url": "https://watersgeo.epa.gov/arcgis/rest/services/ ; https://3dhp.nationalmap.gov/arcgis/rest/services/usgs_3dhp_all/FeatureServer",
+   "licence": "Public domain"
+  },
+  {
+   "dataset": "MRLC NLCD",
+   "use": "Land cover for CN and impervious estimates",
+   "url": "https://www.mrlc.gov/geoserver/mrlc_display/ows",
+   "licence": "Public domain"
+  },
+  {
+   "dataset": "CAL FIRE Fire Hazard Severity Zones",
+   "use": "Wildfire zone for defensible-space rules",
+   "url": "https://egis.fire.ca.gov/arcgis/rest/services/FRAP/FHSZ/MapServer",
+   "licence": "California public data (terms unverified)"
+  },
+  {
+   "dataset": "State lidar portals",
+   "use": "Newer or denser DEMs than 3DEP",
+   "url": "https://coast.noaa.gov/dataviewer/ ; https://data.tnris.org/ ; https://sdd.nc.gov/",
+   "licence": "Generally public domain (unverified this session)"
+  },
+  {
+   "dataset": "LandXML 1.2 schema",
+   "use": "Exchange of surfaces, alignments, profiles, parcels, CgPoints, pipe networks with Civil 3D, TBC, Carlson, 12d",
+   "url": "http://www.landxml.org/ (XSD copies e.g. github.com/tumcms/OpenInfraPlatform schema/LandXML-1.2.xsd)",
+   "licence": "Freely downloadable schema; copyright LandXML.org"
+  },
+  {
+   "dataset": "OGC GeoPackage and GeoJSON",
+   "use": "Vector exchange with GIS",
+   "url": "https://www.geopackage.org/ ; https://datatracker.ietf.org/doc/html/rfc7946",
+   "licence": "Open standards (OGC, IETF)"
+  },
+  {
+   "dataset": "EPSG geodetic dataset via PROJ",
+   "use": "CRS definitions and transformations",
+   "url": "https://epsg.org/terms-of-use.html ; PROJ proj.db",
+   "licence": "EPSG terms: free use, acknowledge IOGP, no modified data attributed to EPSG; PROJ is MIT (PROJ NEWS confirms EPSG import)"
+  },
+  {
+   "dataset": "ICC model codes (IRC appendices AS, AR, AU, BL)",
+   "use": "Prescriptive limits for straw bale, light straw-clay, cob, hempcrete",
+   "url": "https://codes.iccsafe.org/content/IRC2024P2/appendix-bl-hemp-lime-hempcrete-construction",
+   "licence": "Copyright ICC; read online, do not embed text"
+  }
+ ],
+ "key_claims": [
+  {
+   "claim": "Civil 3D 2026 ships Hydraflow Storm Sewers, Hydrographs (SCS and Rational, pond routing) and Express (culverts, channels, inlets, weirs) plus Storm and Sanitary Analysis (discontinued by Autodesk: last build 2024.1.1 installs only against 2024/2025; 2026+ use the cloud Drainage Analysis tools) as extensions",
+   "source": "https://help.autodesk.com/view/CIV3D/2026/ENU/?guid=GUID-F11FAAD6-F3D3-4FC7-8315-BF8329E5E35B"
+  },
+  {
+   "claim": "Civil 3D grading auto-balance iterates toward a target net volume with a 0.1% tolerance and may need re-running",
+   "source": "https://help.autodesk.com/view/CIV3D/2026/ENU/?guid=GUID-27249BE4-A308-41E3-8E7A-D30673E26D9D"
+  },
+  {
+   "claim": "Civil 3D survey import accepts field book, LandXML, point files and drawing points; linework depends on description keys, linework code sets and figure prefix databases",
+   "source": "https://help.autodesk.com/view/CIV3D/2026/ENU/?guid=GUID-97D363BA-BAC2-4BAE-A2AA-C6C96C1CE8EF"
+  },
+  {
+   "claim": "Civil 3D mapcheck reports closure, perimeter, area and curve data with POB choice, direction of travel and chord-vs-arc options; legal-description phrasing lives in an XML file",
+   "source": "https://help.autodesk.com/view/CIV3D/2026/ENU/?guid=GUID-3D99202F-BDD3-4585-89E1-02DE47ECFD3A"
+  },
+  {
+   "claim": "NOAA Atlas 14 point estimates are served by a CGI endpoint used in many public clients; Atlas 15 began as a 2024 Montana pilot with CONUS estimates in peer review in 2026",
+   "source": "github.com/rogerlew/wepppy ; https://water.noaa.gov/about/atlas15 (secondary)"
+  },
+  {
+   "claim": "USGS 3DEP products are public domain and the TNM Access API returns tile lists for the 1 m DEM and LPC datasets",
+   "source": "github.com/awslabs/open-data-registry datasets/usgs-lidar.yaml"
+  },
+  {
+   "claim": "FEMA NFHL MapServer layer 28 carries FLD_ZONE, SFHA_TF and ZONE_SUBTY",
+   "source": "github.com/hyriver/pygeoogc"
+  },
+  {
+   "claim": "SSURGO map-unit hydrologic soil group is muaggatt.hydgrpdcd, queryable with T-SQL via Soil Data Access",
+   "source": "github.com/ncss-tech/soilDB R/SDA_query.R"
+  },
+  {
+   "claim": "2021 IRC has Appendices AS (straw bale), AR (light straw-clay) and AU (cob); 2024 IRC adds Appendix BL (hempcrete) as non-structural infill requiring local adoption",
+   "source": "github.com/thexqin/us-building-codes-dataset"
+  },
+  {
+   "claim": "2010 ADA Standards Table 208.2 scopes accessible spaces by lot size and one in six accessible spaces must be van-accessible",
+   "source": "github.com/usdoj-crt/beta-ada _pages/_resources/restriping-parking-spaces.md"
+  }
+ ],
+ "notes_file": "docs/genesis/research/landdev-domain.md"
+}

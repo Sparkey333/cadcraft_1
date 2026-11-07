@@ -1,0 +1,255 @@
+{
+ "product": "BricsCAD (Bricsys / Octave, a Hexagon company) - V25/V26, Pro/BIM/Ultimate",
+ "summary": "User sentiment 2024-2026 is positive on the volume sites (G2 4.5/5 on 135 reviews; SaaSWorthy 4.7/5 on 131) and the pitch that works is 'AutoCAD-compatible, much cheaper, perpetual licence still sold'. The loudest negatives are stability regressions in each yearly release (V25.1-25.2 panning/autosave crashes with an MTFLAGS=0 workaround, users rolling back to meet deadlines; V26.1.08 more crashes on macOS), a macOS build users call a 'perpetual beta' (freezing, no clear native Apple-silicon binary, Metal renderer slower than OpenGL), a second-class Linux build (Wayland black window), large-drawing/3D performance, dynamic blocks (creation only arrived in V26, experimental and unavailable to US users for licensing reasons), uneven support responsiveness (Capterra support 3.9 vs ease-of-use 4.6), and a January-2026 upgrade/support policy that forum users call a 'cynical move' against old perpetual licences. No direct user reviews of the native civil tools surfaced; the market treats a third-party add-on (Civil Site Design) as the Civil 3D alternative on BricsCAD, implying the native TIN/alignment/corridor stack is incomplete for site design. LIMITS: ten searches only (shared budget exhausted) and every target host was denied by the environment's network policy, so all items are paraphrased from search-engine summaries, not opened pages; no Reddit or Hacker News threads were captured; BIM usability and LISP-compatibility themes were not reached.",
+ "aggregate_ratings": [
+  {
+   "site": "G2 (listed as Octave BricsCAD)",
+   "rating": "4.5/5 (AI sub-scores: ease of setup 9.1, quality of support 9.0)",
+   "count": "135 reviews (134 on compare pages)",
+   "url": "https://www.g2.com/products/octave-bricscad/reviews"
+  },
+  {
+   "site": "Capterra",
+   "rating": "4.5/5 (ease of use 4.6, customer service 3.9); starting price shown $590 one-time",
+   "count": "18 reviews (listing updated Aug 2025)",
+   "url": "https://capterra.com/p/159378/BricsCAD/reviews/"
+  },
+  {
+   "site": "TrustRadius",
+   "rating": "10/10 trScore on the reviews page (9.4–9.5/10 on other crawls); BricsCAD's own rendering/visualization feature score is 8.0 from one rating (the 6.6 first reported was the category average: corrected by the fact-check)",
+   "count": "11 ratings; 2 full reviews (tiny sample)",
+   "url": "https://www.trustradius.com/products/bricscad/reviews"
+  },
+  {
+   "site": "SaaSWorthy (aggregator)",
+   "rating": "4.7/5",
+   "count": "131 ratings",
+   "url": "https://www.saasworthy.com/product/bricscad/reviews"
+  },
+  {
+   "site": "Trustpilot (company page bricsys.com)",
+   "rating": "3.0/5",
+   "count": "4 reviews",
+   "url": "https://nl-be.trustpilot.com/review/bricsys.com"
+  },
+  {
+   "site": "GetApp (CA) / Software Advice",
+   "rating": "not captured (search budget exhausted)",
+   "count": "unknown",
+   "url": "https://www.getapp.ca/software/276675/bricscad"
+  }
+ ],
+ "praise": [
+  {
+   "theme": "AutoCAD familiarity; easy switch",
+   "detail": "G2 reviewers say it is easy to learn for AutoCAD users because it operates similarly; opens DWG, makes clean PDFs, supports AutoCAD LISP routines and toolbars. A reseller's 'about a day of retraining' claim is marketing, not a user.",
+   "source": "https://www.g2.com/products/bricscad/reviews ; https://www.g2.com/compare/autocad-vs-octave-bricscad"
+  },
+  {
+   "theme": "Price and perpetual licence",
+   "detail": "'Costs much less than AutoCAD, with one-time license options' is the most repeated praise; TrustRadius reviewer: a cheaper alternative to AutoCAD LT; AlternativeTo commenter: does everything they did in AutoCAD LT. Independent V26 review confirms perpetual licensing remains available alongside subscription.",
+   "source": "https://www.g2.com/products/bricscad/reviews ; https://www.trustradius.com/products/bricscad/reviews ; https://draftingbench.com/bricscad-v26-review/"
+  },
+  {
+   "theme": "Maintenance economics (user arithmetic)",
+   "detail": "Forum commenter: maintenance is about 60% cheaper than buying an upgrade each year; another reported a $236 upgrade-to-new-perpetual price confirmed by Bricsys sales (single-user claims).",
+   "source": "https://forum.bricsys.com/discussion/40010/maintenance-contract ; https://forum.bricsys.com/discussion/39918/the-new-upgrade-and-support-policy-a-cynical-move"
+  },
+  {
+   "theme": "Setup and support (positive half)",
+   "detail": "G2 AI summaries score ease of setup 9.1 and quality of support 9.0; the MTFLAGS=0 crash workaround came from Bricsys support engaging on the forum.",
+   "source": "https://www.g2.com/compare/bricscad-vs-solidworks ; https://forum.bricsys.com/discussion/39491/panning-and-crashing"
+  },
+  {
+   "theme": "Civil/site add-on compatibility",
+   "detail": "TrustRadius reviewers note strong compatibility with AutoTURN vehicle-tracking; reseller KTF praises V26 'Auto Mapping for Civil Points'.",
+   "source": "https://www.trustradius.com/products/bricscad/reviews ; https://ktfsoftware.com/news/bricscad-v26-our-first-impressions-and-new-features-overview/"
+  },
+  {
+   "theme": "V26 maturation and speed",
+   "detail": "Independent Drafting Bench review calls V26 'a year of maturation' (released 26 Oct 2025; V26.2 on 31 Mar 2026 carried most new capability incl. AI 'BricsCAD Assist' panel and dynamic-block creation). Vendor claims 60+ features, up to 25x faster 3D solid edits and 2.7-2.8x faster DWG file ops - unverified company figures.",
+   "source": "https://draftingbench.com/bricscad-v26-review/ ; https://www.augi.com/articles/detail/whats-new-in-bricscad-v26"
+  },
+  {
+   "theme": "Linux build exists and works",
+   "detail": "Linux users report it runs and feels slightly more stable than the Mac build; a 2022 viewport-lag thread traced the cause to NVIDIA driver setup rather than BricsCAD.",
+   "source": "https://forum.bricsys.com/discussion/38446/first-expirience-with-bricscad-on-linux ; https://forum.bricsys.com/discussion/36154/bricscad-viewport-lags-any-improvement"
+  },
+  {
+   "theme": "LISP runs, and runs faster (added from the editor's own web search on 2026-10-21)",
+   "detail": "Consultants who migrated large custom environments report nearly all AutoLISP files ran unchanged, with minor system-variable and command-line differences; one benchmark had a routine run three times faster than in AutoCAD (vendor-affiliated sources)",
+   "source": "https://forum.bricsys.com/discussion/38040/lisp-behaviour-in-bricscad-vs-autocad"
+  }
+ ],
+ "complaints": [
+  {
+   "theme": "Crashes and stability regressions in V25",
+   "detail": "Jan 2025 V25.1.07 fatal errors while panning/zooming (support workaround MTFLAGS=0; AMD black-screen crashes after update); Apr 2025 V25.2.03 copy-then-pan crashes, a user reinstalled an older build to meet a deadline; Aug 2025 'V25 considerably worse than V24', one user's fifth crash in three hours on a simple model; Mar 2025 crashes on close/autosave and a suspected save bug. Forum anecdotes, not Bricsys-confirmed.",
+   "source": "https://forum.bricsys.com/discussion/39491/panning-and-crashing ; https://forum.bricsys.com/discussion/39703/bricscad-25-2-03-keeps-crashing-panning ; https://forum.bricsys.com/discussion/39609/briscad-crashing ; https://forum.bricsys.com/discussion/39481/file-saving-bricscad-v25",
+   "severity": "high"
+  },
+  {
+   "theme": "Bugs make it unusable for some professional work",
+   "detail": "Capterra March 2025 German review rated 1/5: unusable for professional architecture work due to performance problems and bugs. SaaSWorthy lists 'occasional instability' as a weakness.",
+   "source": "https://capterra.com/p/159378/BricsCAD/reviews/ ; https://www.saasworthy.com/product/bricscad/reviews",
+   "severity": "high"
+  },
+  {
+   "theme": "macOS build quality and parity",
+   "detail": "Thread 'BricsCAD for Mac seems to be a perpetual beta app': freezing, beachballs, GUI glitches, missing Windows parity for years; a user says the Mac build is still Intel-only (Wikipedia says Apple-silicon compatible - unresolved, possibly Rosetta); 2025 move to Metal reported as much slower than the old OpenGL path; 'a lot more crashing since V26.1.08' and V26 unable to save some files V25 handles.",
+   "source": "https://forum.bricsys.com/discussion/39292/bricscad-for-mac-seems-to-be-a-perpetual-beta-app ; https://forum.bricsys.com/discussion/39801/as-version-of-bricscad-for-v26 ; https://forum.bricsys.com/discussion/40271/v26-peformance-issues",
+   "severity": "high"
+  },
+  {
+   "theme": "Linux build second-class",
+   "detail": "Wayland black window plus crash report with GDK assertion on 25.2.03; users say Linux and Mac share the same GUI flaws and unexpected crashes and do not match the Windows experience; desktop-integration quality thread.",
+   "source": "https://forum.bricsys.com/discussion/39653/wayland-black-window-and-crash-report ; https://forum.bricsys.com/discussion/38446/first-expirience-with-bricscad-on-linux ; https://forum.bricsys.com/discussion/35751/quality-of-bricscad-desktop-integration",
+   "severity": "medium"
+  },
+  {
+   "theme": "Performance on large drawings and in 3D",
+   "detail": "G2 common con: large-file handling performance; forum: massive lag selecting objects with the Structure Browser open, 3D viewport lag across platforms, Windows memory usage; G2: parametric blocks weaker than AutoCAD's and can slow things down.",
+   "source": "https://www.g2.com/products/octave-bricscad/reviews ; https://forum.bricsys.com/discussion/35754/massive-lag-when-selecting-objects-and-genearal-working-in-environment-when-structure-browser-is-ope ; https://forum.bricsys.com/discussion/39930/bricscad-windows-memory-usage",
+   "severity": "medium"
+  },
+  {
+   "theme": "Dynamic blocks incomplete; V26 creation withheld in US",
+   "detail": "TrustRadius con: incomplete dynamic-block support. V26 adds Dynamic Block creation/editing but the independent reviewer says it is still experimental and unavailable to US users because of licensing (reason unverified).",
+   "source": "https://www.trustradius.com/products/bricscad/reviews ; https://draftingbench.com/bricscad-v26-review/",
+   "severity": "medium"
+  },
+  {
+   "theme": "AutoCAD command gaps and polish",
+   "detail": "G2: a few AutoCAD commands and tools are not available or less polished; minor differences show up during complicated operations.",
+   "source": "https://www.g2.com/products/bricscad/reviews",
+   "severity": "medium"
+  },
+  {
+   "theme": "Licensing policy shift against old perpetual licences (1 Jan 2026)",
+   "detail": "New Upgrade and Support Policy: support covers latest + three previous versions, but owners of very old perpetual licences can no longer upgrade without maintenance; thread calls it 'a cynical move'; users say maintenance keeps rising and the policy pushes toward subscription. Maintenance figures seen: EUR 710/yr Pro (Bricsys page) vs EUR 440/yr renewal on the Ultimate page (inconsistent, unverified) and $292 Pro at NOVEDGE. No evidence of a specific 2025 price rise.",
+   "source": "https://forum.bricsys.com/discussion/39918/the-new-upgrade-and-support-policy-a-cynical-move ; https://forum.bricsys.com/discussion/40010/maintenance-contract ; https://bricscad.octave.com/maintenance ; https://novedge.com/collections/new-releases",
+   "severity": "medium"
+  },
+  {
+   "theme": "Support responsiveness (split verdict)",
+   "detail": "Capterra customer-service sub-score 3.9 vs 4.6 ease of use; Trustpilot reviewer: registration-code requests unanswered; G2 compare pages list support response time as a common complaint - while G2's summary scores support 9.0.",
+   "source": "https://capterra.com/p/159378/BricsCAD/reviews/ ; https://nl-be.trustpilot.com/review/bricsys.com ; https://www.g2.com/compare/bricscad-vs-zwcad",
+   "severity": "medium"
+  },
+  {
+   "theme": "Plug-in/API churn between yearly versions",
+   "detail": "A .NET plug-in that worked in V24 crashed at V25 start-up; 'Error loading lrx file V25' thread.",
+   "source": "https://forum.bricsys.com/discussion/39410/bricscad-2025-debugging-net-plugin ; https://forum.bricsys.com/discussion/39941/error-loading-lrx-file-v25",
+   "severity": "medium"
+  },
+  {
+   "theme": "Civil tools maturity vs Civil 3D (inferred)",
+   "detail": "No user review of the native civil tools was captured. Structural evidence: the third-party Civil Site Design add-on is marketed on BricsCAD as 'the best Civil 3D alternative' and imports Civil 3D surfaces/alignments, implying the native TIN/alignment/corridor tools (spirals, parabolic vertical curves, CORRIDOR since V21) are not a complete site-design stack (pipe networks, labels, plan production). Inference, unverified.",
+   "source": "https://chasmtech.com/products/civil-site-design-for-bricscad-the-best-civil-3d-alternative/ ; https://civilsitedesign.com/apps/civil-site-design-for-bricscad/ ; https://help.bricsys.com/pl-pl/document/bricscad/whats-new-in-bricscad-v21/civil-tools",
+   "severity": "medium"
+  },
+  {
+   "theme": "Learning resources and community size",
+   "detail": "G2: difficulty learning due to limited resources; comparison site: smaller user community than AutoCAD, fewer forums and third-party resources; SaaSWorthy: steep learning curve for some features.",
+   "source": "https://www.g2.com/products/octave-bricscad/reviews ; https://www.saashub.com/compare-nanocad-vs-bricscad ; https://www.saasworthy.com/product/bricscad/reviews",
+   "severity": "low"
+  },
+  {
+   "theme": "Dated UI; weak rendering",
+   "detail": "TrustRadius con: dated-looking interface. The earlier note that rendering/visualization scored 6.6 was wrong: 6.6 is the TrustRadius category average, BricsCAD's own score is 8.0 from a single rating (fact-check, 2026-10-21)",
+   "source": "https://www.trustradius.com/products/bricscad/reviews ; https://forum.bricsys.com/discussion/39634/gui-problems",
+   "severity": "low"
+  },
+  {
+   "theme": "Product/brand churn",
+   "detail": "G2 and vendor pages now carry the 'Octave' name (Hexagon spin-off branding; details unverified) and BricsCAD Shape was discontinued as a standalone product with V26 per Wikipedia (summary only).",
+   "source": "https://www.g2.com/products/octave-bricscad/reviews ; https://en.wikipedia.org/wiki/BricsCAD",
+   "severity": "low"
+  },
+  {
+   "theme": "V26 regressions: LISP, MLINE, STEP import, slowdowns (added from the editor's own web search on 2026-10-21)",
+   "detail": "Forum threads in late 2025 and 2026 report mature AutoLISP routines terminating early or freezing in V26, multi-MLINE Trim/Extend failing (a changed TRIMEXTENDMODE default is one explanation), a Communicator STEP import hang, 'performance slowdowns' and 'non stop crashing' in Mechanical V26; several posters reverted to V25, which also means a separate Communicator rollback",
+   "source": "https://forum.bricsys.com/discussion/40510/bricscad-v26-regressions-autolisp-routines-terminate-early-and-multiple-mline-trim-extend-fails",
+   "severity": "high"
+  },
+  {
+   "theme": "Upgrade experience (added from the editor's own web search on 2026-10-21)",
+   "detail": "A forum thread titled 'New release, the usual rubbish upgrade experience' collects complaints about each yearly version's installation and migration friction",
+   "source": "https://forum.bricsys.com/discussion/40115/new-release-the-usual-rubbish-upgrade-experience",
+   "severity": "medium"
+  }
+ ],
+ "wishes": [
+  "A stable x.0 release each year - stop shipping regressions that force users to roll back (V25.1/25.2 crash threads).",
+  "A native Apple-silicon macOS build with Windows feature parity and a Metal renderer no slower than the old OpenGL path.",
+  "Full Wayland support and polished Linux desktop integration.",
+  "Better large-drawing, Structure-Browser and 3D-viewport performance.",
+  "Dynamic-block creation available to all users including the US, and out of 'experimental'.",
+  "The remaining missing or less-polished AutoCAD commands closed.",
+  "Keep affordable perpetual upgrades for old licences; stop raising maintenance; no push to subscription.",
+  "Faster, more reliable support tickets and licence/registration handling.",
+  "More tutorials, documentation and a larger community.",
+  "A plug-in API (.NET/BRX/LRX) that does not break at each yearly version.",
+  "Less dated UI and better rendering.",
+  "(Inferred) native civil tools complete enough for site design without a third-party add-on."
+ ],
+ "key_claims": [
+  {
+   "claim": "G2 rates BricsCAD 4.5/5 on 135 reviews (page title 'Octave BricsCAD').",
+   "source": "https://www.g2.com/products/octave-bricscad/reviews"
+  },
+  {
+   "claim": "Capterra rates BricsCAD 4.5/5 on 18 reviews with customer service 3.9 and ease of use 4.6; a March 2025 review gave 1/5 for bugs and performance.",
+   "source": "https://capterra.com/p/159378/BricsCAD/reviews/"
+  },
+  {
+   "claim": "TrustRadius shows 10/10 on 11 ratings (2 written reviews); BricsCAD's rendering/visualization score is 8.0 from one rating, 6.6 being the category average (corrected by the fact-check); incomplete dynamic-block support is listed as a con",
+   "source": "https://www.trustradius.com/products/bricscad/reviews"
+  },
+  {
+   "claim": "V25.1.07 users got fatal errors while panning/zooming; Bricsys support's workaround was MTFLAGS=0.",
+   "source": "https://forum.bricsys.com/discussion/39491/panning-and-crashing"
+  },
+  {
+   "claim": "A V25.2.03 user rolled back to an older build to meet a deadline because of panning crashes.",
+   "source": "https://forum.bricsys.com/discussion/39703/bricscad-25-2-03-keeps-crashing-panning"
+  },
+  {
+   "claim": "An Aug 2025 forum user judged V25 considerably worse than V24 for crashes and performance.",
+   "source": "https://forum.bricsys.com/discussion/39609/briscad-crashing"
+  },
+  {
+   "claim": "Mac users describe BricsCAD for Mac as a 'perpetual beta' with years of freezing and parity gaps.",
+   "source": "https://forum.bricsys.com/discussion/39292/bricscad-for-mac-seems-to-be-a-perpetual-beta-app"
+  },
+  {
+   "claim": "A forum user says the Mac build is Intel-only with no native Apple-silicon version (conflicts with Wikipedia's 'Apple Silicon compatible'; unresolved).",
+   "source": "https://forum.bricsys.com/discussion/39801/as-version-of-bricscad-for-v26"
+  },
+  {
+   "claim": "BricsCAD V26 was released 26 Oct 2025, V26.2 on 31 Mar 2026; dynamic-block creation is experimental and unavailable to US users; perpetual licensing remains available.",
+   "source": "https://draftingbench.com/bricscad-v26-review/"
+  },
+  {
+   "claim": "A new Upgrade and Support Policy effective 1 Jan 2026 covers latest + three previous versions and ends upgrades for very old perpetual licences without maintenance; forum users call it cynical.",
+   "source": "https://forum.bricsys.com/discussion/39918/the-new-upgrade-and-support-policy-a-cynical-move"
+  },
+  {
+   "claim": "Vendor claims V26 is up to 25x faster for 3D solid edits and 2.7-2.8x faster for DWG file operations than V25 (unverified).",
+   "source": "https://www.augi.com/articles/detail/whats-new-in-bricscad-v26"
+  },
+  {
+   "claim": "Civil Site Design is marketed as the Civil 3D alternative on BricsCAD, reading Civil 3D surfaces and alignments directly.",
+   "source": "https://chasmtech.com/products/civil-site-design-for-bricscad-the-best-civil-3d-alternative/"
+  },
+  {
+   "claim": "No Reddit or Hacker News threads were captured (the Reddit-targeted and site:news.ycombinator.com searches returned none) and all review/forum hosts were blocked by the environment's network policy, so every item is paraphrased from search summaries, not opened pages.",
+   "source": "see section 0 of the notes file"
+  },
+  {
+   "claim": "Late-2025/2026 Bricsys forum threads report V26 regressions (AutoLISP routines terminating early, MLINE trim/extend failures, STEP import hangs, slowdowns) with users reverting to V25 (added from the editor's own web search on 2026-10-21)",
+   "source": "https://forum.bricsys.com/discussion/40271/v26-peformance-issues"
+  }
+ ],
+ "notes_file": "docs/genesis/research/bricscad-reviews.md"
+}

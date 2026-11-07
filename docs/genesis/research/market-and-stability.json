@@ -1,0 +1,309 @@
+{
+ "product": "Market and stability landscape",
+ "summary": "Civil/infrastructure design software is a ~USD 2-4 B/yr market growing ~7%/yr (analyst figures disagree by 60%). Serious civil tools cost USD 1.2k-6k per seat per year; Autodesk, Vectorworks, SketchUp and Land F/X are subscription-only, leaving BricsCAD, Carlson, 12d, Bentley (at ~2.5x annual) and Trimble dongles as the last perpetual options - the clearest pricing gap. Open-source tools live on small recurring donations plus a few corporate patrons (Blender: ~EUR 3.1 M income in FY2024 yet a loss), low-priced pro builds (QCAD, Krita store builds, Ardour pay-what-you-want) or a separate services company (Godot/W4); the VC-backed FreeCAD company Ondsel shut down in Dec 2024 (unverified). On stability, Autodesk's own release notes list 10-17 crash/hang fixes per Civil 3D point release through 2026-2027, its knowledge base has a separate FATAL ERROR article per workflow, and references are path strings in DWGs and per-user XML files that break on every move, rename, drive mapping, permission or cloud-cache difference; each mitigation (autosave, .bak, Recovery Manager, Reference Manager, eTransmit, Bind, Desktop Connector) carries documented fine print, and cloud worksharing turns 'file not found' into 'local changes discarded'. Caveat: the shared search budget ran out after 12 searches and page fetches were proxy-blocked, so BricsCAD/Bentley/Vectorworks crash evidence and several funding pages are unverified; Autodesk evidence comes from the official Autodesk help tool and sibling notes.",
+ "aggregate_ratings": [
+  {
+   "site": "Autodesk Civil 3D",
+   "rating": "USD 360/mo; 2,870/yr; 8,610/3-yr",
+   "count": "subscription only (no perpetual since 2016); page undated, reseller lists 2027 annual at 3,174.99",
+   "url": "https://www.autodesk.com/solutions/aec/civil-3d-subscription-faq"
+  },
+  {
+   "site": "Autodesk Flex (Civil 3D)",
+   "rating": "USD 3 per token (4,999 tokens and under); minimum purchase 33 tokens for USD 99 since 4 June 2026 (was 100 tokens for USD 300); Civil 3D draws 9 tokens per day (about USD 27)",
+   "count": "pay-per-day tokens; corrected by the fact-check on 2026-10-21",
+   "url": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/Use-Flex-tokens-with-an-Autodesk-subscription.html"
+  },
+  {
+   "site": "Autodesk AEC Collection",
+   "rating": "USD 3,675/yr on autodesk.com's 2027 page (a licensing consultancy had cited ~3,375) (reconciled after the fact-check and critique, 2026-10-21)",
+   "count": "subscription",
+   "url": "https://autodesksaudits.com/blog/autodesk-aec-collection-guide/"
+  },
+  {
+   "site": "Autodesk Forma",
+   "rating": "Data Management ~USD 540/yr; Design Collaboration ~936/yr; Build from ~117/mo (third-party, Jun 2026)",
+   "count": "subscription; official buy page shows placeholders",
+   "url": "https://www.thepricer.org/how-much-does-bim-360-cost/"
+  },
+  {
+   "site": "BricsCAD Ultimate",
+   "rating": "USD ~1,180/yr as indexed on bricsys.com, which matches the EUR 1,176 annual subscription; the perpetual Ultimate licence is EUR 2,640 one-time plus optional EUR 440/yr maintenance on the official store (section 3)",
+   "count": "perpetual + maintenance, or subscription",
+   "url": "https://bricsys.com/ms-my/bricscad/ultimate"
+  },
+  {
+   "site": "Carlson Survey",
+   "rating": "~USD 2,150 standalone; 3,250-3,575 with embedded AutoCAD OEM",
+   "count": "perpetual; maintenance ~10% of retail/yr; upgrades max 50% of retail (reseller FAQ, undated)",
+   "url": "https://thatcadgirl.com/faq/what-to-know-about-purchasing-carlson-software/"
+  },
+  {
+   "site": "Carlson Civil Suite / Select Suite Pick 4",
+   "rating": "~USD 4,250",
+   "count": "perpetual (reseller FAQ, undated)",
+   "url": "https://thatcadgirl.com/faq/what-to-know-about-purchasing-carlson-software/"
+  },
+  {
+   "site": "Bentley OpenSite Designer",
+   "rating": "from USD 3,168/yr",
+   "count": "Virtuoso 12-month subscription incl. 2 Keys",
+   "url": "https://www.bentley.com/en/products/opensite-designer/"
+  },
+  {
+   "site": "Bentley OpenRoads Designer",
+   "rating": "USD 6,057/yr; perpetual 15,142 (G2, updated 2026-03-25, third-party)",
+   "count": "subscription or perpetual",
+   "url": "https://g2.com/products/openroads-designer/pricing"
+  },
+  {
+   "site": "12d Model",
+   "rating": "quote only; UC-win/Road plug-in USD 750; subscription ~40% of product price/yr after year 1",
+   "count": "perpetual + subscription, CodeMeter dongle",
+   "url": "https://www.forum8.co.jp/ENGLISH/shokai/12d-2-e.htm"
+  },
+  {
+   "site": "Vectorworks Landmark",
+   "rating": "USD 1,530/yr; ~170/mo monthly",
+   "count": "subscription only for new buyers; Service Select perpetual holders being converted (+8%/yr cap)",
+   "url": "https://www.vectorworks.net/start/buy-more-save-more"
+  },
+  {
+   "site": "SketchUp Pro / Studio / Go",
+   "rating": "USD 399/yr (99.99/mo); Studio 819-859/yr; Go 129/yr",
+   "count": "subscription only; pricing changed July 2025",
+   "url": "https://www.renderahouse.com/blog/sketchup-pricing"
+  },
+  {
+   "site": "Land F/X",
+   "rating": "Planting F/X USD 695/yr; Irrigation F/X 995/yr; F/X CAD 775/yr; Detail F/X 175/yr",
+   "count": "subscription since 2023; needs AutoCAD or F/X CAD; official pages conflict (FAQ shows 575/875)",
+   "url": "https://www.landfx.com/kb/admin-issues/info/6514-subscription"
+  },
+  {
+   "site": "Trimble Business Center",
+   "rating": "no public list; reseller perpetual Intermediate dongle USD 4,734.25; Advanced network 4,405",
+   "count": "perpetual or subscription; 40-80% multi-seat discounts to 2026-10-31",
+   "url": "https://cansel.ca/product/trimble-business-center-intermediate-dongle-license-515801"
+  },
+  {
+   "site": "Civil engineering design software market (Report Prime)",
+   "rating": "USD 2.30 B (2025) to 3.78 B (2032), CAGR 7.35%",
+   "count": "analyst estimate; page internally inconsistent",
+   "url": "https://www.reportprime.com/civil-engineering-design-software-r11594"
+  },
+  {
+   "site": "Civil engineering design software market (Credence)",
+   "rating": "USD 2.24 B (2024), ~7.4% CAGR to 2032",
+   "count": "analyst estimate",
+   "url": "https://www.credenceresearch.com/report/civil-engineering-design-software-market"
+  },
+  {
+   "site": "Civil engineering design software market (Market Reports World)",
+   "rating": "USD 3.71 B (2025), 7.0% CAGR to 2034",
+   "count": "analyst estimate",
+   "url": "https://www.marketreportsworld.com/market-reports/civil-engineering-design-software-market-14723150"
+  },
+  {
+   "site": "Blender Foundation (reference open-source funding)",
+   "rating": "~EUR 3.1 M income FY2024 (from 2.55 M); Dev Fund +21%; operated at a loss; reserves low",
+   "count": "donations + corporate patrons (Dell EUR 30k/yr, OctaneRender dev >=240k/yr, Wacom +210k/yr, Netflix Animation 2026)",
+   "url": "https://www.blender.org/?p=95075"
+  },
+  {
+   "site": "Autodesk (company) on Trustpilot",
+   "rating": "1.5/5",
+   "count": "171 reviews (billing/auto-renewal, support), via sibling notes",
+   "url": "https://uk.trustpilot.com/review/autodesk.com"
+  }
+ ],
+ "praise": [
+  {
+   "theme": "Perpetual licensing still exists at the low end",
+   "detail": "BricsCAD, Carlson, 12d and Trimble still sell perpetual seats; surveyors cite '3 seats of Carlson IntelliCAD for the price of a single seat of C3d' and switching to BricsCAD after 20+ years of AutoCAD over the pricing model.",
+   "source": "https://rpls.com/forums/software-cad-mapping/surveying-software/ (via sibling notes); https://thatcadgirl.com/faq/what-to-know-about-purchasing-carlson-software/"
+  },
+  {
+   "theme": "Open-source funding works at modest scale",
+   "detail": "Blender grew income to ~EUR 3.1 M with small donors reaching 20% of income and strategic corporate patrons from hardware/renderer vendors; the model transfers to CAD (survey-hardware, workstation, GPU vendors as patrons).",
+   "source": "https://www.blender.org/?p=95075; https://www.cgchannel.com/tag/blender-development-fund/"
+  },
+  {
+   "theme": "Autodesk crash reporting is systematic",
+   "detail": "CER sends a minidump, recent command history and system info; reports are triaged by severity and number of customers and reporters are notified when fixed. A new app should match this from day one.",
+   "source": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/Error-Reporting.html"
+  },
+  {
+   "theme": "Recovery tooling exists and is documented",
+   "detail": "AutoCAD ships .bak on save, .sv$ autosave, Drawing Recovery Manager, AUDIT/RECOVER/RECOVERALL, and an optional full-time CRC check; the Reference Manager audits missing references across many drawings without opening them.",
+   "source": "https://help.autodesk.com/view/ACD/2027/ENU/?guid=GUID-C62ED04D-3638-4EFE-ADA1-5677F7DE7835; https://help.autodesk.com/view/ACD/2027/ENU/?guid=GUID-D04C68E3-DCB9-4251-AB96-DC02C90E1573"
+  },
+  {
+   "theme": "Relative paths are now the default",
+   "detail": "AutoCAD's default xref path type is relative (REFPATHTYPE) and eTransmit's 'organized folder structure' converts absolute paths inside the root to relative, so a project folder can be moved as a unit when everything lives inside it.",
+   "source": "https://help.autodesk.com/view/ACD/2026/PTB/?guid=GUID-A987D2FF-45BD-474E-99C1-E6316A42F667; https://help.autodesk.com/view/ACD/2027/PTB/?guid=GUID-9A2F96E5-34D1-4504-A5F3-54BCD410041D"
+  },
+  {
+   "theme": "CADCraft's engine-level crash discipline is a usable base",
+   "detail": "No panics in production code, catch_unwind around every command and interactive step with the drawing restored, ~40 hostile-input tests, input caps, background autosave with instance lock files and GPU-fault autosave, AUDIT that never guesses at content (sibling inventory).",
+   "source": "cadcraft-referencing.md (sibling notes); /home/user/cadcraft_1/crates/engine/src/guard.rs"
+  }
+ ],
+ "complaints": [
+  {
+   "theme": "Crash volume is structural, not incidental",
+   "detail": "Autodesk's own fixed-issue lists carry ~17 crash/hang fixes in Civil 3D 2027.1 alone, ~12 in 2027, ~15 in 2026.1 and ~11 in 2026.2; 2024.3 fixed two cases where alignment data was lost after save and reopen. Forum users report weekly to daily crashes in 2026.",
+   "source": "https://help.autodesk.com/view/CIV3D/2027/ENU/?guid=civil_3d_fixed_issues_2027_1; https://help.autodesk.com/view/CIV3D/2026/ENU/?guid=civil_3d_fixed_issues_2026_1; https://forums.autodesk.com/t5/civil-3d-forum/civil-3d-2026-crashing/td-p/14083638",
+   "severity": "high"
+  },
+  {
+   "theme": "Crashes on save and open lose work",
+   "detail": "Separate KB articles cover fatal errors on save (corrupt AEC objects; remedy is to export everything to LandXML and re-import, or fall back to the .sv$), on save when proxy graphics exhaust memory, on open from corrupt xrefs or back-saved files; a crash mid-save can leave a truncated DWG with no footer.",
+   "source": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/Civil-3D-Fatal-Error-on-Save-and-program-crash.html; https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/Fatal-error-when-saving-a-drawing-using-SAVE-or-QSAVE.html; https://forums.augi.com/showthread.php?176841-Unable-to-recover-drawing-quot-Drawing-file-is-not-valid-quot",
+   "severity": "high"
+  },
+  {
+   "theme": "Data shortcuts are per-user path files with no locking",
+   "detail": "Each shortcut XML stores a path; in ACC/Forma projects member permissions rewrite that path per user ('truncating or expanding the path ... making it unavailable for others'); 2027.1 fixed host drawings mutating shortcut XMLs 'may not cover all cases'; Autodesk docs state there is no locking for concurrent shortcut edits and folder-structure changes may be lost; syncing over WAN can take hours and 'Repair' hangs.",
+   "source": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/Data-shortcuts-have-a-Broken-Reference-status-in-Civil-3D-prospector-for-a-project-stored-in-BIM-360.html; https://help.autodesk.com/view/CIV3D/2023/ENU/?guid=GUID-150A307C-8206-4B82-8D2C-3C4FF1A7608D; https://help.autodesk.com/view/CIV3D/2027/ENU/?guid=civil_3d_fixed_issues_2027_1",
+   "severity": "high"
+  },
+  {
+   "theme": "Xref paths break on move, drive mapping, permissions, cloud cache or VPN",
+   "detail": "Relative paths are unavailable across drives or servers and can fail because 'automatic save is too frequent'; unresolved-xref causes include mapped-vs-UNC, drive letters hijacked by USB devices, paths over 256 chars, stopped DNS services; after a server migration opening drawings can freeze, with the advice to unplug the network cable; the Reference Manager bulk-repaths with no undo.",
+   "source": "https://help.autodesk.com/view/ACD/2027/ENU/?guid=GUID-164C2548-91E6-476D-AFDF-6257340C2EE2; https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/XREF-in-AutoCAD-is-Unresolved.html; https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/When-trying-to-attach-a-drawing-as-external-reference-with-a-relative-path-the-message-appears-Relative-path-cannot-be-assigned.html",
+   "severity": "high"
+  },
+  {
+   "theme": "Cloud worksharing discards local work",
+   "detail": "Desktop Connector sync failures leave files 'Modified' and invisible to co-workers; a 'Conflict' gives priority to the cloud copy and local changes go to the Recycle Bin; 'Free Up Space' before sync deletes unsynced work; file locking is unsupported on long paths; the shortcut-sync balloon can appear before upload finishes so clicking it loads stale data.",
+   "source": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/Losing-data-when-working-with-DWG-files-in-Desktop-Connector.html; https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/File-shows-Conflict-State-in-Desktop-Connector.html; https://help.autodesk.com/view/CIV3D/2023/ENU/?guid=Civil3D_ReleaseNotes_2023_2_1_Release_Notes_2023_2_1_known_issues_html",
+   "severity": "high"
+  },
+  {
+   "theme": "DWG bloat and corruption are routine",
+   "detail": "Autodesk lists cloud-sync folders, non-Microsoft networks, NAS/SAN, VPN drops, email and third-party DWG writers as corruption sources; cleanup is a ritual (detach xrefs, OVERKILL, -PURGE regapps, reset scale list, WBLOCK into a new file); files stay ~8 MB after deleting everything; RECOVER can itself stall at 99% or be demanded on every open; field reports of 20 MB to 1.6 GB after pasting a corridor and >100,000 RegApps.",
+   "source": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/Drawing-file-is-not-valid-error-message.html; https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/how-to-reduce-the-size-of-a-dwg-file-in-autocad.html; https://forums.autodesk.com/t5/civil-3d-forum/urgent-file-size-is-huge/td-p/13769483 (via sibling notes)",
+   "severity": "medium"
+  },
+  {
+   "theme": "Autosave and backup have fine print that defeats them",
+   "detail": "The autosave timer resets on every manual save so frequent savers may never get an .sv$; autosave stays off if a LISP routine or the Block Editor crashes mid-command; only one .bak generation is kept and none is written when saving to Forma Data Management since 2022.1; the Recovery Manager ignores never-saved drawings; full-time CRC validation is off by default because it slows opening.",
+   "source": "https://help.autodesk.com/view/ACD/2027/ENU/?guid=GUID-C62ED04D-3638-4EFE-ADA1-5677F7DE7835; https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-ensure-autosave-is-always-on-in-AutoCAD.html; https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/File-not-fully-synchronizing-in-Collaboration-for-Civil-3D.html",
+   "severity": "medium"
+  },
+  {
+   "theme": "Packaging and binding are lossy",
+   "detail": "eTransmit omits SHX/TTF fonts, .pat, .lin, .pmp, OLE links and URL references by default and can silently drop files; Bind renames every named object to name$0$name while Insert silently lets the local definition override the bound one; bind defects (parcel labels to '???', missing profile band labels) persisted across releases.",
+   "source": "https://help.autodesk.com/view/ACD/2027/PTB/?guid=GUID-C32FA153-88D6-41D9-B868-0DFF59509CD2; https://help.autodesk.com/view/ACD/2027/PLK/?guid=GUID-E3039A04-4524-462B-AA27-E5F7DE8C4E9E; https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/Not-all-files-are-included-in-eTransmit-zip-package-in-AutoCAD-LT.html",
+   "severity": "medium"
+  },
+  {
+   "theme": "File locking is delegated to the OS and goes stale",
+   "detail": "Since AutoCAD 2000 the program does not control locking; .dwl/.dwl2 exist only for WHOHAS, survive crashes and cause 'in use or read-only' until deleted by hand; cloud drives 'often do not have any type of file locking'.",
+   "source": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/File-locking-no-longer-controlled-by-software.html; https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/Error-DWG-file-is-currently-in-use-or-is-read-only.html",
+   "severity": "medium"
+  },
+  {
+   "theme": "Fault isolation is done by the user",
+   "detail": "Standard remedies for fatal errors are: install updates, reset the user profile, update the GPU driver, uninstall plug-ins, purge/audit/recover, WBLOCK, clean reinstall; many crash classes are add-in, object-enabler or .NET/VC++ runtime interactions rather than core geometry.",
+   "source": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/Fatal-Error-crash-when-launching-Civil-3D-2019.html; https://forums.autodesk.com/t5/autocad-forum/crash-in-autocad-2026-1-2-saving-drawings-containing-civil3d/td-p/14230627 (via sibling notes)",
+   "severity": "medium"
+  },
+  {
+   "theme": "Subscription-only pricing and billing anger",
+   "detail": "Civil 3D at USD 2,870/yr list with no perpetual option; Vectorworks and SketchUp also subscription-only; Autodesk the company scores 1.5/5 on Trustpilot over auto-renewal billing; Flex tokens burn on idle sessions; network licences retired.",
+   "source": "https://www.autodesk.com/solutions/aec/civil-3d-subscription-faq; https://uk.trustpilot.com/review/autodesk.com (via sibling notes); https://www.openlm.com/blog/autodesk-flex-is-it-the-right-solution-for-you/ (via sibling notes)",
+   "severity": "medium"
+  },
+  {
+   "theme": "Open-source commercialisation is fragile",
+   "detail": "Blender ran at a loss in 2024 with reserves below target despite record income; the VC-backed FreeCAD company Ondsel shut down in Dec 2024 after its hosted SaaS failed to reach sustainable revenue (unverified, from memory).",
+   "source": "https://80.lv/articles/blender-reports-operating-at-a-loss-in-2024; https://ondsel.com/blog/goodbye/ (unverified)",
+   "severity": "low"
+  },
+  {
+   "theme": "Evidence gaps in this run",
+   "detail": "BricsCAD, Bentley, Vectorworks and Carlson crash threads, G2/Capterra review text, BLS buyer counts and most open-source funding pages could not be opened (search budget exhausted after 12 queries; fetches proxy-blocked); those items are flagged unverified in the notes.",
+   "source": "market-and-stability.md section 0",
+   "severity": "low"
+  }
+ ],
+ "wishes": [
+  "Business: free, perpetual, open desktop app; monetise a paid hosted project container + link-health service only after the desktop tool is in daily use (Ondsel lesson); paid support/training for firms and municipalities; sponsorship from survey-hardware, workstation and GPU vendors plus a small-donor programme (Blender model); later a plug-in marketplace; never dual licensing or core feature paywalls.",
+  "Stability: keep CADCraft's no-panic/catch_unwind/hostile-test discipline and add a CI gate on every PR; atomic saves with N-generation backups and a continuous change journal instead of a resettable 10-minute timer; autosave on web; per-object integrity hashes always on.",
+  "Stability: sandbox plug-ins (separate process or WASM) so add-ins, enablers and runtimes cannot take the host down; opt-in crash telemetry that files a reproducible report with the drawing excerpt.",
+  "Files: no RegApp/NOD-style bloat by construction, deterministic save, per-table size report; documented versioned object schema with forward and backward readers so 'save to older version' exists from day one.",
+  "Referencing: references by content identity plus project-relative path recorded in a project manifest (xrefs, data links, images, fonts, templates, plot styles with hash/size/mtime/role); relocation, packaging (fonts, patterns, linetypes included) and eTransmit become a manifest copy.",
+  "Referencing: a linkcheck command reporting found/missing/refused/changed-since-load for every nested link, a file watcher raising 'reload available', persisted reference state (Unloaded, found-at), colour-coded link health in the palette.",
+  "Collaboration: shared design objects referenced by ID through the manifest rather than per-user XML path files; explicit lock/merge semantics; local-first sync that never discards local work (keep both versions on conflict).",
+  "Containment: one movable project folder; copy = deep copy with link rewrite; paste/insert/bind merge rules (existing name wins, anonymous names regenerated) shown in a preview so nothing changes silently."
+ ],
+ "key_claims": [
+  {
+   "claim": "Civil 3D US list price is USD 360/month, 2,870/year, 8,610/3-year (three annual payments); Flex is USD 3 per token with a 33-token (USD 99) minimum since June 2026 (corrected from 'USD 300 per 100 tokens' by the fact-check)",
+   "source": "https://www.autodesk.com/solutions/aec/civil-3d-subscription-faq"
+  },
+  {
+   "claim": "Vectorworks Landmark lists at USD 1,530/year and perpetual licences are no longer sold to new buyers.",
+   "source": "https://www.vectorworks.net/start/buy-more-save-more; https://www.vectorworks.net/subscription-switch"
+  },
+  {
+   "claim": "Bentley OpenSite Designer starts at USD 3,168/year (Virtuoso subscription).",
+   "source": "https://www.bentley.com/en/products/opensite-designer/"
+  },
+  {
+   "claim": "Carlson sells perpetual licences; Survey ~USD 2,150, Civil Suite ~4,250; maintenance ~10% of retail per year (reseller FAQ, undated).",
+   "source": "https://thatcadgirl.com/faq/what-to-know-about-purchasing-carlson-software/"
+  },
+  {
+   "claim": "Civil engineering design software is estimated at USD 2.2-3.7 B in 2024-2025 growing ~7%/yr.",
+   "source": "https://www.reportprime.com/civil-engineering-design-software-r11594; https://www.credenceresearch.com/report/civil-engineering-design-software-market; https://www.marketreportsworld.com/market-reports/civil-engineering-design-software-market-14723150"
+  },
+  {
+   "claim": "Blender Foundation income reached ~EUR 3.1 M in FY2024 but it operated at a loss with reserves below acceptable levels.",
+   "source": "https://www.blender.org/?p=95075; https://80.lv/articles/blender-reports-operating-at-a-loss-in-2024"
+  },
+  {
+   "claim": "Civil 3D 2027.1 release notes list roughly 17 crash/hang fixes, including crashes when repairing corridor data references and a fix for host drawings mutating Data Shortcut XML files that 'may not cover all cases'.",
+   "source": "https://help.autodesk.com/view/CIV3D/2027/ENU/?guid=civil_3d_fixed_issues_2027_1"
+  },
+  {
+   "claim": "Civil 3D 2024.3 fixed alignment data being lost after saving and reopening a drawing.",
+   "source": "https://help.autodesk.com/view/CIV3D/2024/ENU/?guid=civil_3d_2024_3_fixed_issues"
+  },
+  {
+   "claim": "Autodesk documents that there is no locking for concurrent data-shortcut edits in Autodesk Docs and that folder-structure changes may be lost.",
+   "source": "https://help.autodesk.com/view/CIV3D/2023/ENU/?guid=GUID-150A307C-8206-4B82-8D2C-3C4FF1A7608D"
+  },
+  {
+   "claim": "In ACC/BIM 360 projects, member permissions rewrite the data-shortcut XML path per user, breaking it for others.",
+   "source": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/Data-shortcuts-have-a-Broken-Reference-status-in-Civil-3D-prospector-for-a-project-stored-in-BIM-360.html"
+  },
+  {
+   "claim": "AutoCAD relative xref paths are unavailable when the reference is on another drive or server, and attaching with a relative path can fail because autosave is too frequent.",
+   "source": "https://help.autodesk.com/view/ACD/2027/ENU/?guid=GUID-164C2548-91E6-476D-AFDF-6257340C2EE2; https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/When-trying-to-attach-a-drawing-as-external-reference-with-a-relative-path-the-message-appears-Relative-path-cannot-be-assigned.html"
+  },
+  {
+   "claim": "The AutoCAD autosave timer resets on each manual save, so an .sv$ may never be created; drawings never saved once are not tracked by the Drawing Recovery Manager.",
+   "source": "https://help.autodesk.com/view/ACD/2027/ENU/?guid=GUID-C62ED04D-3638-4EFE-ADA1-5677F7DE7835"
+  },
+  {
+   "claim": "Desktop Connector resolves a sync Conflict by discarding local changes to the Recycle Bin, and 'Free Up Space' before sync deletes unsynced work.",
+   "source": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/Losing-data-when-working-with-DWG-files-in-Desktop-Connector.html"
+  },
+  {
+   "claim": "eTransmit does not automatically include SHX/TTF fonts, .pat, .lin, .pmp, OLE links or URL-referenced files.",
+   "source": "https://help.autodesk.com/view/ACD/2027/PTB/?guid=GUID-C32FA153-88D6-41D9-B868-0DFF59509CD2"
+  },
+  {
+   "claim": "Since AutoCAD 2000 the program does not control file locking; .dwl/.dwl2 files are only for WHOHAS and persist after a crash.",
+   "source": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/File-locking-no-longer-controlled-by-software.html"
+  },
+  {
+   "claim": "Autodesk's CER triages crash reports by severity and number of affected customers and notifies reporters when fixed.",
+   "source": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/Error-Reporting.html"
+  }
+ ],
+ "notes_file": "docs/genesis/research/market-and-stability.md"
+}
